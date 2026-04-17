@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>JES2</h1>
+    <p>Job Entry Subsystem 2。ジョブの受付、スケジューリング、実行管理、出力処理を担当する中核的なサブシステム。</p>
+    
+    <div class="mermaid">
+    graph TD
+    In[Input] --> Conv[Conversion]
+    Conv --> Exec[Execution]
+    Exec --> Out[Output]
+    Out --> Purge[Purge]
+    </div>
+
+</body>
+</html>

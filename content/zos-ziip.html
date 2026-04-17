@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>zIIP (IBM Z Integrated Information Processor)</h1>
+    <p>zIIPは、特定のワークロード（Java、XML処理、Db2のネットワーク処理、システム管理の一部など）をメインのプロセッサからオフロードして実行するための専用プロセッサです。zIIPで実行されるワークロードについてはソフトウェアライセンス料が軽減されるため、コスト効率の向上に大きく寄与します。</p>
+    
+    <div class="mermaid">
+    graph LR
+        Workload[ワークロード] --> Dispatcher{Dispatcher}
+        Dispatcher -->|General Work| GP[General Purpose Processor]
+        Dispatcher -->|Java/Db2/etc| zIIP[zIIP Processor]
+        style zIIP fill:#e1f5fe,stroke:#01579b
+    </div>
+
+    <h2>主な特徴</h2>
+    <ul>
+        <li><strong>コスト削減:</strong> zIIPで処理される時間は、MSU（ソフトウェア課金の指標）の計算に含まれません。</li>
+        <li><strong>パフォーマンス向上:</strong> 本体のプロセッサ（GP）の負荷を軽減し、システム全体の効率を高めます。</li>
+        <li><strong>自動化:</strong> OS（z/OS）が自動的に適切な処理をzIIPに振り分けます。</li>
+    </ul>
+</body>
+</html>

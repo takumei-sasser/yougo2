@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用語集 | Glossary</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- サイドバー Navigation -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>Glossary</h1>
+                <div class="search-box">
+                    <input type="text" id="term-search" placeholder="用語を検索...">
+                </div>
+                <div class="category-filter" id="category-chips">
+                    <!-- JavaScriptで動的に生成 -->
+                </div>
+            </header>
+            <nav class="term-nav">
+                <ul id="term-list">
+                    <!-- JavaScriptで動的に生成 -->
+                    <li class="skeleton"></li>
+                    <li class="skeleton"></li>
+                    <li class="skeleton"></li>
+                </ul>
+            </nav>
+            <footer class="sidebar-footer">
+                <span class="version">v1.0.0</span>
+            </footer>
+        </aside>
+
+        <!-- メインコンテンツ Content Area -->
+        <main class="main-content">
+            <div id="content-loader" class="loader hidden"></div>
+            <div class="iframe-wrapper">
+                <iframe id="content-frame" name="content-frame" src="about:blank" frameborder="0"></iframe>
+                <div id="welcome-overlay" class="welcome-screen">
+                    <h2>用語を選択してください</h2>
+                    <p>左のメニューから用語を選択すると、ここに詳細が表示されます。</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

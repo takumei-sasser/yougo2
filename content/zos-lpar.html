@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>LPAR</h1>
+    <p>Logical Partition。物理的なマシンを論理的に分割し、複数のOSを独立して稼働させる技術です。</p>
+    
+    <div class="mermaid">
+    graph TD
+    HW[Physical Machine] --> PR[PR/SM]
+    PR --> L1[LPAR 1: z/OS]
+    PR --> L2[LPAR 2: Linux on z]
+    </div>
+
+</body>
+</html>

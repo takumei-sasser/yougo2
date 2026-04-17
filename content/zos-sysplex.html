@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>Parallel Sysplex</h1>
+    <p>複数のz/OSシステムを連携させ、単一のシステムイメージとして運用するクラスタ技術です。</p>
+    
+    <div class="mermaid">
+    graph LR
+    zOS1[z/OS Node 1] <--> CF[Coupling Facility]
+    zOS2[z/OS Node 2] <--> CF
+    </div>
+
+</body>
+</html>
