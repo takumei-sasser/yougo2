@@ -19,5 +19,14 @@
     <h1>MQ</h1>
     <p>MQは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Middlewareカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>IBM MQ (旧称 WebSphere MQ / MQSeries)</strong> は、異なるプラットフォームやアプリケーション間で、確実かつ非同期にデータを伝達するためのメッセージング・ミドルウェアです。</p>
+        <ul>
+            <li><strong>z/OSネイティブの堅牢性:</strong> 単なるソフトウェアルーターではなく、z/OSのリカバリ機能（ARMなど）やSMFと深く統合されており、システム障害時でも「一度だけ確実に（Exactly-Once）」メッセージを届ける堅牢性を持ちます。</li>
+            <li><strong>Shared Queue (共用キュー):</strong> シスプレックス環境では、Coupling Facility (CF) 上にキューを配置する「Shared Queue」を構成できます。これにより、単一のMQマネージャーがダウンしても、他のLPARのMQマネージャーが滞留メッセージを即座に引き継いで処理することが可能です。</li>
+            <li><strong>非同期連携のハブ:</strong> クラウド環境（コンテナ上のマイクロサービス）からのAPI要求を、MQを通じてバックエンドのCICSトランザクションやDb2更新処理へ非同期に連携させる、ハイブリッドクラウド・アーキテクチャの要として活躍しています。</li>
+        </ul>
+    </section>
 </body>
 </html>

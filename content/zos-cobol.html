@@ -19,5 +19,15 @@
     <h1>COBOL</h1>
     <p>COBOLは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>COBOL (COmmon Business Oriented Language)</strong> は、大規模なバッチ処理や取引処理において、正確な10進演算（パック10進数など）と超大容量データ処理を極めて高いパフォーマンスで実行できる、メインフレームの主役たる言語です。</p>
+        <ul>
+            <li><strong>z/OSネイティブな最適化:</strong> Enterprise COBOL for z/OS コンパイラは、最新のIBM Zプロセッサの特定のハードウェア命令（SIMDやベクター10進演算命令など）を最大限に活用するよう最適化されており、ハードの進化と共に旧バージョンから再コンパイルするだけで劇的な性能向上が期待できます。</li>
+            <li><strong>コンパイルと実行のフロー:</strong> ソースコードはコンパイラによってオブジェクト・モジュール（OBJ）に変換され、次に <strong>バインダー (Linkage Editor)</strong> によってシステムライブラリ（Language Environment）等と結合され、実行可能なロードモジュール（LOADLIB/PDSE）として格納されます。</li>
+            <li><strong>サブシステムとの連携:</strong> SQLをソースに直接埋め込む（EXEC SQL〜）ことで <strong>Db2</strong> と連携したり、CICSコマンド（EXEC CICS〜）を使ってオンライン・トランザクション処理を行ったりするための強力な統合機能（プリコンパイラ/コプロセッサ）を備えています。</li>
+            <li><strong>モダナイゼーション:</strong> 近年ではJSON/XMLのネイティブパース機能や、Java環境・API連携機能が追加され、単なるレガシー言語ではなく、ハイブリッドクラウド時代にも適応できるように進化し続けています。</li>
+        </ul>
+    </section>
 </body>
 </html>

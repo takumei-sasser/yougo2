@@ -19,5 +19,15 @@
     <h1>CICS</h1>
     <p>CICSは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Middlewareカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>CICS (Customer Information Control System)</strong> は、金融端末のATMやクレジットカード決済など、秒間数万件に及ぶ高頻度かつ超高速のオンライントランザクション処理（OLTP）を支える世界最高峰のミドルウェアです。</p>
+        <ul>
+            <li><strong>疑似会話型処理 (Pseudo-Conversational):</strong> ユーザーからの入力待ちの間に、プログラムをメインメモリから退避させてシステムリソースを即座に解放するアーキテクチャです。数万人の同時ユーザーを限られたメモリでサポートする極めて効率的な設計設計の根幹です。</li>
+            <li><strong>トランザクションとタスク管理:</strong> トランザクションID（4文字の英数字、例: CEMT）を受信すると、CICS内部のタスク・ディスパッチャーが極めて低いオーバーヘッドでタスクを生成・実行・終了させます。OS（z/OS）のタスク生成よりもはるかに軽量です。</li>
+            <li><strong>広範なリソース管理とACID特性:</strong> Db2やVSAM、MQなど多様なデータソースへの更新を一元的に管理し、2フェーズコミットによる完全な <strong>ACID（原子性、一貫性、独立性、永続性）</strong> を保証します。</li>
+            <li><strong>API化と進化:</strong> CICSはCOBOLプログラムだけでなく、Node.jsやJavaをネイティブにサポートしており、既存の堅牢なCICSトランザクションプログラムをそのままRESTful API（z/OS Connect経由など）として公開できます。</li>
+        </ul>
+    </section>
 </body>
 </html>

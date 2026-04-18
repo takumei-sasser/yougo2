@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>zSort (Integrated Accelerator for Z Sort)</h1>
+    <p>IBM z15以降のプロセッサで提供される、データソート処理をハードウェアレベルで高速化する機能です。Developmentカテゴリーに含まれます。</p>
+    
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>Integrated Accelerator for Z Sort (zSort)</strong> は、メインフレームのバッチ処理において最も時間を要する「ソート処理」を極限まで最適化するための革新的なハードウェア機能です。</p>
+        <ul>
+            <li><strong>オンチップ・コプロセッサ:</strong> z15およびz16の各プロセッサ・コアには、ソート専用のアクセラレータ（ハードウェア命令）が組み込まれています。これにより、ソフトウェア（CPUサイクル）のみで行っていた従来のソートアルゴリズムと比較して、CPU使用量と実行時間を大幅に削減します。</li>
+            <li><strong>DFSORT/Db2との統合:</strong> ユーザーはJCLやアプリケーションコードを変更する必要はありません。z/OS DFSORTおよびDb2 for z/OS ユーティリティが、ハードウェアアクセラレータの存在を自動検知し、適時 <code>SORTL</code> 命令を発行してソートを透過的にオフロードさせます。</li>
+            <li><strong>大容量メモリの恩恵:</strong> zSortはプロセッサの高速なハードウェア処理と、z/OSの広大な利用可能メモリを組み合わせることで、ディスクI/Oの発生を徹底的に抑え、インメモリでのソート性能を飛躍的に高めています。夜間バッチの短縮に直結する重要な技術です。</li>
+        </ul>
+    </section>
+</body>
+</html>

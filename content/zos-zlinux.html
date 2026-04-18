@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>Linux on IBM Z (zLinux / RHEL on Z)</h1>
+    <p>メインフレームの堅牢なハードウェア上で稼働するLinux環境です。Modernizationカテゴリーに分類されます。</p>
+    
+    <section class="technical-deep-dive">
+        <h2>スペシャ<bos>リストによる技術解説</h2>
+        <p><strong>Linux on IBM Z (通称 zLinux)</strong> は、メインフレームのアーキテクチャ（s390x命令セット）にネイティブ対応したエンタープライズ向けのLinuxオペレーティングシステム（Red Hat Enterprise Linux, SUSE, Ubuntuなど）です。</p>
+        <ul>
+            <li><strong>ハードウェアの極限利用:</strong> PR/SMによるLPAR上、またはz/VM上の仮想マシンとして稼働します。数千個のLinux仮想サーバーを単一の物理マシン（筐体）に集約でき、クラウド移行の際のTCO（総所有コスト）削減やデータセンターの省電力・省スペース化に絶大な威力を発揮します。</li>
+            <li><strong>IFL (Integrated Facility for Linux):</strong> z/OS用に課金される汎用プロセッサ（CP）ではなく、Linux機能実行専用の安価な特殊エンジン <strong>IFL</strong> 上で稼働します。これにより、z/OSのソフトウェア・ライセンス費用を一切引き上げることなく、Linuxワークロードをスケーラブルに実行できます。</li>
+            <li><strong>HiperSockets連携:</strong> 同一筐体内で稼働するz/OS（Db2等の基幹データベース）と、HiperSocketsを介してメモリ経由で直接通信でき、ネットワークの遅延を限界まで削ぎ落としたセキュアなTier-to-Tier連携アーキテクチャを築くことができます。</li>
+            <li><strong>オープンソース・エコシステム:</strong> OpenShiftやDocker/Kubernetesといったモダンなコンテナ環境をフルサポートし、アーキテクチャこそ異なれど分散系サーバーと全く同じ操作感でアジャイル開発をメインフレーム上で実現します。</li>
+        </ul>
+    </section>
+</body>
+</html>

@@ -19,5 +19,15 @@
     <h1>DB2 for z/OS</h1>
     <p>DB2 for z/OSは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Middlewareカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>Db2 for z/OS</strong> (旧称 DB2) は、金融機関や政府機関など、一瞬の停止も許されないミッションクリティカルなデータを保護するための、世界最高クラスの可用性とトランザクション処理能力を誇るリレーショナル・データベースです。</p>
+        <ul>
+            <li><strong>z/OSとの究極の密結合:</strong> Db2自体がz/OSの内部コンポーネント（WLM、RACF、データセット管理、CF等）と密接に連携するように設計されており、極端な高負荷時でもOS側と協調してリソースを最適配分します。</li>
+            <li><strong>データ・シェアリング技術:</strong> Coupling Facility (CF) の Lock Structure と Cache Structure を利用し、複数の z/OS システム上にある Db2 サブシステムで同一のディスク・データに同時（Active-Active）に読み書きアクセスできる <strong>Db2 Data Sharing</strong> を実現します。</li>
+            <li><strong>サブシステムの構造:</strong> コアな処理は MSTR（マスター）、DBM1（データベース管理）、DIST（分散データ処理機能）、IRLM（ロッキング）など、複数の専用アドレス空間に分割され、障害の局所化とパフォーマンスの並列度を高めています。</li>
+            <li><strong>モダナイゼーション:</strong> 近年ではREST API機能の標準搭載や、Zoweエコシステムとの連携を通じ、オンプレミスのDb2データをクラウドネイティブなアジャイル開発環境から安全かつ容易に利用することが可能になっています。</li>
+        </ul>
+    </section>
 </body>
 </html>

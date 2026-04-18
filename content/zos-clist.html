@@ -19,5 +19,14 @@
     <h1>CLIST</h1>
     <p>CLISTは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>CLIST (Command List)</strong> は、TSO環境で利用できる古典的なコマンド手続き言語です。REXXが登場する以前から使われており、現在でも多くのレガシーシステムやIBMの標準ツール内で稼働しています。</p>
+        <ul>
+            <li><strong>TSOコマンドの自動化:</strong> 名前の通り、本来の目的は一連のTSOコマンド（ALLOCATEやFREEなど）をリスト化して順次実行させることでした。これに制御構文（IF/THENや変数）を足すことでプログラミング言語的に発展しました。</li>
+            <li><strong>REXXとの比較と現在:</strong> 文字列のパース能力や可読性、他サブシステム連携の強力さにおいてREXXが優れているため、新規開発では基本的にREXXが推奨されます。しかし、既存の莫大なCLIST資産を安易にREXXで書き換えるリスクを避けるため、ハイブリッドで運用されるのが一般的です。</li>
+            <li><strong>データセットと実行:</strong> 実行形態はインタープリタであり、CLISTライブラリ（PDS）に保存してTSOプロンプトから <code>EXEC 'dataset.name(member)'</code>（または短縮形 <code>EX</code>）で呼び出します。</li>
+        </ul>
+    </section>
 </body>
 </html>

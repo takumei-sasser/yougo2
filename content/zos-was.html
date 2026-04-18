@@ -19,5 +19,15 @@
     <h1>WebSphere Application Server</h1>
     <p>WebSphere Application Serverは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Middlewareカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>WebSphere Application Server (WAS) for z/OS</strong> は、分散系サーバーでも普及しているJava EEアプリケーションサーバーですが、z/OS版はOSのコア機能と深く統合された特殊なアーキテクチャを持ちます。</p>
+        <ul>
+            <li><strong>Controller/Servant アーキテクチャ:</strong> 単一の巨大なJVMではなく、リクエストをキューイングし管理する <strong>Controller (制御領域)</strong> と、実際にJavaアプリを実行する複数の <strong>Servant (付帯領域)</strong> に分かれて動作します。異常終了したServantはWLMによって瞬時に再起動され、システム全体がダウンすることはありません。</li>
+            <li><strong>WLM (Workload Manager) との密連携:</strong> HTTPリクエストの到着時、WLMのポリシーと目標（レスポンスタイム等）に基づいて、動的にServant領域の数を増減（スケールアウト/イン）させます。</li>
+            <li><strong>zIIPエコノミー:</strong> JVM上で動作するJavaコードは、特権を持たない限り <strong>zIIP (System z Integrated Information Processor)</strong> にほぼ100%オフロード可能であり、ソフトウェアライセンス費用の抑制に大きく貢献します。</li>
+            <li><strong>セキュリティ統合:</strong> SAFインタフェースを通じ、JavaのJ2EEセキュリティロールを直接 <strong>RACF</strong> と統合して認証・認可を行えます。</li>
+        </ul>
+    </section>
 </body>
 </html>

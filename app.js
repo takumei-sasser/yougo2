@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'zos-pli', title: 'PL/I', file: 'zos-pli.html', category: 'Development' },
         { id: 'zos-assembler', title: 'Assembler (HLASM)', file: 'zos-assembler.html', category: 'Development' },
         { id: 'zos-dfsyl', title: 'DFSORT', file: 'zos-dfsort.html', category: 'Development' },
+        { id: 'zos-zsort', title: 'zSort', file: 'zos-zsort.html', category: 'Development' },
         { id: 'zos-idcams', title: 'IDCAMS', file: 'zos-idcams.html', category: 'Development' },
         { id: 'zos-iebgener', title: 'IEBGENER', file: 'zos-iebgener.html', category: 'Development' },
         { id: 'zos-iebcopy', title: 'IEBCOPY', file: 'zos-iebcopy.html', category: 'Development' },
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Modernization ---
         { id: 'zos-uss', title: 'USS', file: 'zos-uss.html', category: 'Modernization' },
+        { id: 'zos-zlinux', title: 'Linux on IBM Z', file: 'zos-zlinux.html', category: 'Modernization' },
         { id: 'zos-connect', title: 'z/OS Connect', file: 'zos-connect.html', category: 'Modernization' },
         { id: 'zos-mf', title: 'z/OSMF', file: 'zos-mf.html', category: 'Modernization' },
         { id: 'zos-zcx', title: 'zCX (Containers)', file: 'zos-zcx.html', category: 'Modernization' },

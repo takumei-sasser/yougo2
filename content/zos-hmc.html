@@ -17,7 +17,17 @@
 </head>
 <body class="is-iframe">
     <h1>HMC</h1>
-    <p>Hardware Management Console。メインフレームのハードウェア資源を管理・操作するための専用コンソールです。</p>
+    <p>Hardware Management Console。メインフレームのハードウェア構成を管理・操作するための専用コンソールです。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>HMC (Hardware Management Console)</strong> は、IBM Zの物理マシン（CPC）全体を俯瞰し、ハードウェアレベルの構成や監視を行うための独立したアプライアンス（現在は専用のセキュアなLinuxベース）です。</p>
+        <ul>
+            <li><strong>SE (Support Element) との連携:</strong> 各CPC筐体内に組み込まれている <strong>SE</strong> と、社内ネットワークから隔離された専用のクローズドLAN（BPE: Bulk Power Ethernet 等）で通信します。ユーザーはHMCを通じて、複数のCPCのSEを集中的に操作します。</li>
+            <li><strong>LPAR構成とActivation Profile:</strong> メモリサイズ、CPU（CP/zIIP/IFL等）の割り当てウェイト、使用するチャネルパス（FICON等）を定義した <strong>プロファイル (Image Profile / IOCDS)</strong> を管理し、ここからLPARの起動（Activate / Load）を行います。</li>
+            <li><strong>Capacity on Demand (CoD):</strong> 繁忙期や災害時にのみCPUの稼働コア数を増やす <strong>CBU (Capacity Backup)</strong> や <strong>OOCoD (On/Off CoD)</strong> のアクティベーション操作もHMCから行います。</li>
+            <li><strong>セキュアな設計:</strong> HMC自体が外部への攻撃ベクターとならないよう、多要素認証（MFA）の必須化やファームウェアの厳格な署名確認など、ハードウェアに近い強力なセキュリティ要件が課されています。</li>
+        </ul>
+    </section>
 </body>
 </html>

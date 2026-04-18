@@ -19,5 +19,15 @@
     <h1>REXX</h1>
     <p>REXXは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>REXX (REstructured eXtended eXecutor)</strong> は、z/OS上で稼働する非常に強力で柔軟なスクリプト言語であり、システム運用の自動化から複雑なデータ処理まで幅広く利用されます。</p>
+        <ul>
+            <li><strong>ホストコマンド環境の切り替え:</strong> <code>ADDRESS TSO</code>、<code>ADDRESS ISPEXEC</code>（ISPF）、<code>ADDRESS SDSF</code> など、実行環境を動的に切り替えることで、外部サブシステムやインターフェースのコマンドをREXXスクリプト内から直接発行できます。</li>
+            <li><strong>EXECIOによるデータ操作:</strong> ファイルI/Oの標準インターフェースである <code>EXECIO</code> コマンドを使用して、PDSメンバーや順次データセットの読み書きを簡潔に行うことができ、データ加工・帳票作成タスクに不可欠です。</li>
+            <li><strong>コンパイルと実行:</strong> 通常はインタプリタとして動作しますが、IBM REXX Compilerを使用することでロードモジュール化（コンパイル）でき、実行速度の向上やソースコードの隠蔽（セキュリティ保護）が可能です。</li>
+            <li><strong>強力なパース機能:</strong> <code>PARSE</code> 命令を用いた強力な文字列抽出・分割機能により、固定長レコードやMVSコマンドの出力結果などの解析を極めて容易に行うことができます。</li>
+        </ul>
+    </section>
 </body>
 </html>
