@@ -19,5 +19,15 @@
     <h1>LUN</h1>
     <p>LUNは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>LUN (Logical Unit Number)</strong> は、ストレージ・ネットワーク（SANなど）上で、ホストが個々の論理的・物理的なストレージデバイスを識別するためのアドレスです。</p>
+        <ul>
+            <li><strong>z/OSネイティブ環境との対比:</strong> 従来のECKD（Count-Key-Data）アーキテクチャでは、デバイス番号（UCB）やサブチャネルを通じてアクセスされます。DS8000などの内部では、LSS内で00からFFまでの16進数で管理されるボリュームIDが、広い意味でのLUNに相当します。</li>
+            <li><strong>z/OS FCP (Fibre Channel Protocol) 環境:</strong> z/OSが直接SCSIコマンドを使用してオープン系ストレージにアクセスするFCP環境（Linux on IBM Zなどでも使用）においては、WWPN（World Wide Port Name）と組み合わせて、対象ディスクを明確に指定するために本格的な「LUN」が使用されます。</li>
+            <li><strong>LUNマスキングとゾーニング:</strong> SAN環境において、特定のホスト（HBA）にだけ特定のLUNを見せる（アクセスを許可する）技術です。これにより、複数OSが混在するストレージ環境でもセキュリティとデータ隔離が担保されます。</li>
+            <li><strong>PAV（Parallel Access Volume）におけるエイリアス:</strong> z/OS特有のPAV機能で使用されるエイリアスアドレスも、ストレージハードウェア側から見れば一つのLUN（論理デバイス）として消費されます。</li>
+        </ul>
+    </section>
 </body>
 </html>

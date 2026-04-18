@@ -19,5 +19,15 @@
     <h1>LSS</h1>
     <p>LSSは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>LSS (Logical Subsystem)</strong> は、IBMストレージ（DS8000シリーズなど）の内部において、物理的なストレージ筐体を論理的に分割するための管理単位です。</p>
+        <ul>
+            <li><strong>CU (Control Unit) イメージとしての役割:</strong> メインフレームから物理ストレージは単一のデバイスとして見えるわけではなく、最大256個の論理的な「コントロール・ユニット（CU）」として認識されます。この論理CUに相当するハードウェア上の概念がLSSです。</li>
+            <li><strong>ボリューム（LUN）の収容限界:</strong> 1つのLSSには、最大 <strong>256個のボリューム（ベース・ボリュームとPAVエイリアスの合計）</strong> を割り当てることができます。</li>
+            <li><strong>拡張機能の管理単位:</strong> LSSは単なるアドレス空間の区切りではなく、<strong>PPRC（Peer-to-Peer Remote Copy）</strong> や <strong>FlashCopy</strong> といった高度なコピー機能セッションを構成し、制御・管理するための基本的な境界（ドメイン）として機能します。</li>
+            <li><strong>SSID (Subsystem Identifier):</strong> 各LSSにはシステム全体で一意となる4桁の16進数（SSID）が付与され、OSから特定の論理サブシステムを識別するために使用されます。</li>
+        </ul>
+    </section>
 </body>
 </html>
