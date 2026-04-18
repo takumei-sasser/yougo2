@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>ZWS (IBM Z Workload Scheduler)</h1>
+    <p>企業全体のバッチジョブや様々な処理の実行順序を統合的に管理・自動化する、メインフレームのジョブスケジューラ製品です。System Managementカテゴリーに分類されます。</p>
+
+    <h2>概要と歴史</h2>
+    <p>ZWSは、かつて <strong>OPC (Operations Planning and Control)</strong> や <strong>TWS (Tivoli Workload Scheduler)</strong> と呼ばれていた製品群の後継にあたります。日本のメインフレーム・ユーザー間では、現在でも「OPC」という通称で呼ばれることが多くあります。</p>
+
+    <h2>主な機能</h2>
+    <ul>
+        <li><strong>ジョブネット定義:</strong> ジョブ同士の先行・後続関係（依存関係）をグラフィカルに定義し、複雑な業務フローを組み立てます。</li>
+        <li><strong>カレンダー・スケジュール実行:</strong> 「毎月末」「毎週月曜日」などのカレンダー情報に基づき、自動的にスケジュールを生成してジョブを投入します。</li>
+        <li><strong>イベント駆動型処理:</strong> 「特定のデータセットが作成されたらジョブを開始する」といったイベント連携も可能です。</li>
+        <li><strong>クロスプラットフォーム対応:</strong> z/OS上のジョブだけでなく、分散系（Windows/Linux/UNIXなど）のジョブや、クラウド上の処理も一元管理し、システム全体にまたがる業務フローを制御します。</li>
+    </ul>
+
+    <div class="mermaid">
+    graph TD
+        A[ZWS Controller\n(z/OS)] -->|Submit JCL| B(JES2/JES3)
+        A -->|Schedule| C[ZWS Tracker\n(z/OS)]
+        A -->|Schedule| D[ZWS Agent\n(Linux/Windows)]
+        B -.->|Status Update| C
+        C -->|Report| A
+        D -->|Report| A
+    </div>
+
+</body>
+</html>

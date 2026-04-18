@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>WLC (Workload License Charges)</h1>
+    <p>IBM Z のソフトウェアの課金体系（価格設定モデル）のベースとなる重要概念です。System / Pricing カテゴリーに分類されます。</p>
+
+    <h2>課金体系の仕組み</h2>
+    <p>従来のメインフレームのソフトウェア課金は「マシンのフルキャパシティ（最大性能）」をベースにしていましたが、WLC は「そのソフトウェアが稼働する LPAR で実際に使用されたキャパシティ（サブキャパシティ）」に基づいて課金される画期的なモデルです。</p>
+
+    <ul>
+        <li><strong>R4HA (Rolling 4-Hour Average):</strong> 
+        サブキャパシティ課金の基準となる指標です。z/OS の SCRT (Sub-Capacity Reporting Tool) が、過去4時間のCPU使用率の平均値（MSU単位）を毎時計算し、月に1度算出されたその「月間ピーク時の R4HA」に対してソフトウェアライセンス料が課金されます。
+        </li>
+        <li><strong>コストの最適化:</strong>
+        特定の時間にスパイク的にCPUを使用しても、4時間平均でならされるため、瞬間的なピークによる莫大な課金増を防ぎます。
+        </li>
+    </ul>
+
+    <h2>最新の課金体系 (Tailored Fit Pricing)</h2>
+    <p>現在では WLC に加え、クラウドのような完全消費ベースモデルである <strong>TFP (Tailored Fit Pricing)</strong> も普及しています。ピークトラフィックによるペナルティを排除し、「年間でどれだけMSUを消費したか」に基づくシンプルな従量課金や開発環境向けの定額モデルなどが提供されています。</p>
+
+    <div class="mermaid">
+    xychart-beta
+        title "Rolling 4-Hour Average (R4HA)"
+        x-axis [0:00, 1:00, 2:00, 3:00, 4:00, 5:00]
+        y-axis "MSU" 0 --> 100
+        line [20, 25, 30, 80, 50, 45]
+        line [20, 22, 25, 38, 46, 51]
+    </div>
+    <p>※上図の青線が実際のCPU使用量、もう一つが R4HA (移動平均) のイメージです。請求基準はR4HAのピーク値となります。</p>
+</body>
+</html>

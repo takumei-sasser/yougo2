@@ -16,8 +16,21 @@
     </script>
 </head>
 <body class="is-iframe">
-    <h1>OSA Adapter</h1>
-    <p>OSA Adapterは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Net & Secカテゴリーに分類されます。</p>
-    
+    <h1>OSA Adapter (Open Systems Adapter)</h1>
+    <p>IBM Z サーバーにおいて、メインフレームをオープン・ネットワーク（イーサネットなど）に直接接続するための統合ハードウェア・ネットワーク・インターフェース・カード（NIC）です。Net & Secカテゴリーに分類されます。</p>
+
+    <h2>主な特徴と役割</h2>
+    <ul>
+        <li><strong>外部との架け橋:</strong> メインフレーム内部のチャネル・アーキテクチャ（単独のI/O専用機構）と、標準的な LAN（Ethernet/TCP/IP）との間のプロトコル変換をシームレスに行います。</li>
+        <li><strong>OSA-Express:</strong> 現在主流のモデル群です。10GbE / 25GbE などの高速ネットワークに対応し、大量のIPトラフィックをさばきます。</li>
+        <li><strong>QDIO (Queued Direct I/O):</strong> OSA とメインフレームのメインメモリ（HSA）間で、割り込みを最小限に抑えながらダイレクトにデータをやり取りする非常に高速な転送方式です。これによりCPUオーバーヘッドが劇的に低減します。</li>
+        <li><strong>共有機能:</strong> 1つの物理的な OSA ポートを、複数の LPAR（論理区画）や複数の TCP/IP スタックで共有（シェア）することが可能です。</li>
+    </ul>
+
+    <div class="mermaid">
+    graph LR
+        T[z/OS TCP/IP Stack] <-->|QDIO Architecture| O[OSA-Express Adapter]
+        O <-->|Ethernet| N[Corporate LAN / WAN]
+    </div>
 </body>
 </html>

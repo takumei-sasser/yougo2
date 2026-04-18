@@ -16,8 +16,28 @@
     </script>
 </head>
 <body class="is-iframe">
-    <h1>RMF</h1>
-    <p>RMFは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Subsystemsカテゴリーに分類されます。</p>
-    
+    <h1>RMF (Resource Measurement Facility)</h1>
+    <p>z/OS オペレーティング・システム全体のリソース使用状況やパフォーマンス・データを収集、レポートティングする IBM 製のパフォーマンス管理ツールです。Subsystemsカテゴリーに分類されます。</p>
+
+    <h2>主な機能と役割</h2>
+    <ul>
+        <li><strong>システム状況の可視化:</strong> CPU、メモリ（中央ストレージ）、チャネル（I/O）、DASD、WLM（ワークロード・マネージャー）などのパフォーマンス情報を一元的に収集します。</li>
+        <li><strong>Monitor I, II, III:</strong>
+            <ul>
+                <li><strong>Monitor I:</strong> 主にバッジ処理で長期間の傾向分析（キャパシティ・プランニング）のためのデータをバックグラウンドで収集。</li>
+                <li><strong>Monitor II:</strong> スナップショット的に現在のリソース状況を把握。</li>
+                <li><strong>Monitor III:</strong> 短期間のリアルタイムな遅延分析（ボトルネック分析）。誰が何によって待たされているかを即座に特定します。</li>
+            </ul>
+        </li>
+        <li><strong>SMF レコードでの出力:</strong> 収集した結果は SMF (System Management Facility) レコード・タイプ 70〜79 に書き出され、後から詳細な分析に利用されます。</li>
+    </ul>
+
+    <div class="mermaid">
+    graph TD
+        Z[z/OS Resources\nCPU/Mem/IO] -->|Collect| R(RMF Data Gatherer)
+        R -->|Real-time| M3[Monitor III Reporter\nDelay Analysis]
+        R -->|Historical| S[(SMF Datasets)]
+        S -->|Batch Report| ER[RMF Postprocessor]
+    </div>
 </body>
 </html>

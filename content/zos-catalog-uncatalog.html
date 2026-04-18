@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>カタログ / アンカタログ (Catalog/Uncatalog)</h1>
+    <p>z/OS において、データセットの名前と物理的な格納先（ボリューム）を結びつける管理の仕組みです。Storageカテゴリーに分類されます。</p>
+
+    <h2>カタログ (Catalog) とは</h2>
+    <p>データセットごとに、「どのボリューム（DASD）にあるか」という位置情報を <strong>システム・カタログ (ICF Catalog)</strong> に登録する行為を「カタログする」と言います。</p>
+    <ul>
+        <li>カタログされたデータセットは、JCLなどでアクセスする際、<code>DISP=SHR</code> などと記述してデータセット名を指定するだけでよく、物理ボリューム名 (<code>VOL=SER=xxx</code>) を指定する必要がなくなります。</li>
+        <li>SMS（Storage Management Subsystem）で管理されるデータセットは、作成時に必ず自動的にカタログされます。</li>
+    </ul>
+
+    <h2>アンカタログ (Uncatalog) とは</h2>
+    <p>システム・カタログからデータセットの位置情報（エントリ）のみを削除する行為です。データセットのファイル実体そのものはボリューム上に**残ったまま**になります。</p>
+    <ul>
+        <li><strong>用途:</strong> 別のカタログに登録し直す場合や、一時的にシステムから見えなくする場合に使用します。</li>
+        <li><strong>警告:</strong> アンカタログしただけではディスクの空き容量は増えません。完全に削除するためにはアンカタログではなく「スクラッチ (Scratch / Delete)」を行う必要があります。</li>
+    </ul>
+
+    <div class="mermaid">
+    stateDiagram-v2
+        [*] --> Uncataloged : Allocate (No Catalog)
+        Uncataloged --> Cataloged : Catalog (IEHPROGM/IDCAMS)
+        Cataloged --> Uncataloged : Uncatalog (Keep Data)
+        Cataloged --> Deleted : Scracth & Delete
+        Uncataloged --> Deleted : Scratch
+        Deleted --> [*]
+    </div>
+
+</body>
+</html>

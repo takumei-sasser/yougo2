@@ -17,7 +17,34 @@
 </head>
 <body class="is-iframe">
     <h1>DS8000</h1>
-    <p>DS8000は、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
-    
+    <p>IBM DS8000 シリーズは、IBM Z（メインフレーム）や IBM Power Systems のミッションクリティカルな要件に特化して設計された、ハイエンドのエンタープライズ・ストレージ・システムです。Storageカテゴリーに分類されます。</p>
+
+    <h2>メインフレームとの強固な統合</h2>
+    <p>DS8000 は、z/OS と連携するための多数の専用機能（Synergy）を持っています。</p>
+    <ul>
+        <li><strong>zHyperLink:</strong> ファイバーチャネル（FICON）を介さず、CPUとストレージを直結してI/O遅延を極限まで削減する超低遅延テクノロジー。</li>
+        <li><strong>HyperSwap / PPRC:</strong> 複数サイト間でデータを同期し、障害時に瞬時にストレージを切り替える高可用性機能。</li>
+        <li><strong>FlashCopy:</strong> 瞬時のデータ複製機能。</li>
+    </ul>
+
+    <h2>シリーズ（世代）ごとの違い</h2>
+    <ul>
+        <li><strong>DS8870 / DS8880:</strong> 
+            従来型のHDDとSSDを混載できるハイブリッド・ストレージ。DS8880 からはオールフラッシュ（All-Flash）モデルが主流となり始めました。
+        </li>
+        <li><strong>DS8900F:</strong> 
+            IBM z15 に合わせて登場したオールフラッシュ・アレイの先駆け。サイバー・レジリエンス機能（Safeguarded Copy：イミュータブル・スナップショットによるランサムウェア対策）にいち早く対応しました。
+        </li>
+        <li><strong>DS8A00 (DS8K / 最新世代):</strong> 
+            Fibre Channel NVMe (NVMe over FC) デバイスのエンドツーエンドのサポート強化、次世代プロセッサによる更なるI/O処理の高速化、および AIを活用した自律的なパフォーマンス調整機能を搭載しています。
+        </li>
+    </ul>
+
+    <div class="mermaid">
+    graph TD
+        Z[z/OS Host] -->|zHyperLink/FICON| DS(DS8000 Series)
+        DS -->|PPRC Sync| DS2(Remote DS8000)
+        DS -->|Safeguarded Copy| BK[(Immutable Backup)]
+    </div>
 </body>
 </html>

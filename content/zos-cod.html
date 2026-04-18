@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>CoD (Capacity on Demand)</h1>
+    <p>IBM Z サーバーにおいて、一時的または恒久的にCPUのリソース（キャパシティ）を動的に追加・有効化する仕組みです。Hardware / Pricing カテゴリーに分類されます。</p>
+
+    <h2>主な CoD の種類</h2>
+    <p>メインフレームには、物理的には搭載されているが無効化されている「ダークファイバ（スリープ状態のCPUコア）」のようなリソース（Dark Core）が存在します。これらを必要なタイミングでマイクロコードによって有効化します。</p>
+    
+    <ul>
+        <li><strong>On/Off CoD:</strong>
+            月次/四半期末のピーク処理や想定外の負荷増に対して、数日間など一時的にキャパシティをオンにする機能です。使用した期間・リソース分だけ課金されます。
+        </li>
+        <li><strong>CBU (Capacity Backup):</strong>
+            災害対策（DR）のテストや、実際の障害発生時にバックアップサイトの筐体リソースを一時的にオンにするためのライセンスです。本番ピーク用ではありません。
+        </li>
+        <li><strong>CUoD (Capacity Upgrade on Demand):</strong>
+            恒久的な処理能力の追加です。ハードウェアを物理的に交換することなく、論理設定の変更だけで即座に性能をアップグレードできます。
+        </li>
+    </ul>
+
+    <h2>メリット</h2>
+    <p>システムを停止することなく（無停止で）リソースを増強できるため、ビジネスの要求に迅速に応えつつ初期投資を抑える「使った分だけ支払う（Pay-as-you-go）」モデルを実現できる点が最大のメリットです。</p>
+
+</body>
+</html>

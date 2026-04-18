@@ -16,8 +16,26 @@
     </script>
 </head>
 <body class="is-iframe">
-    <h1>zERT (Encryption)</h1>
-    <p>zERT (Encryption)は、z/OS（メインフレーム）を支える重要な技術要素の一つです。Net & Secカテゴリーに分類されます。</p>
-    
+    <h1>zERT (z/OS Encryption Readiness Technology)</h1>
+    <p>z/OS 上で送受信される TCP/IP トラフィック（ネットワーク通信）が、どのような暗号化方式で保護されているかを自動的かつ網羅的に監視・記録する機能です。Net & Secカテゴリーに分類されます。</p>
+
+    <h2>背景と役割</h2>
+    <p>メインフレームの通信は AT-TLS、IPsec、SSH、SSL/TLSなど様々な仕組みで暗号化可能ですが、管理者が「どの通信が、どのプロトコルで、どれだけ強固な暗号アルゴリズム（鍵長など）で保護されているか（あるいは平文のままか）」を完全に把握するのは困難でした。</p>
+    <p>zERT はこれを可視化するために z/OS V2R3 で導入されました。</p>
+
+    <h2>zERT の主な機能</h2>
+    <ul>
+        <li><strong>ディスカバリー (Discovery):</strong> TCP/IP スタック自体が、出入りするすべての TCP/IP コネクションの暗号化属性（プロトコル、バージョン、暗号化アルゴリズム等）を自動検出し、SMF レコード (タイプ 119) に記録します。</li>
+        <li><strong>アグリゲーション (Aggregation):</strong> 同じセキュリティ属性を持つ通信を一定時間ごとに集計・要約して SMF に記録し、データ量を削減します。</li>
+        <li><strong>ポリシー適用 (zERT Network Analyzer / Policy Enforcement):</strong> 取得したデータを z/OSMF のプラグインなどで視覚的に分析したり、「弱い暗号が使われた場合にアラートを上げる/遮断する」といった制御（Pervasive Encryption の一環）を行う基盤となります。</li>
+    </ul>
+
+    <div class="mermaid">
+    graph TD
+        A[App Traffic] --> B(z/OS TCP/IP Stack)
+        B -->|Monitor Crypto| C[zERT Discovery]
+        C -->|Summary| D[(SMF 119 Records)]
+        D --> E[zERT Network Analyzer\n(z/OSMF)]
+    </div>
 </body>
 </html>

@@ -16,8 +16,25 @@
     </script>
 </head>
 <body class="is-iframe">
-    <h1>RACF</h1>
-    <p>RACFは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Net & Secカテゴリーに分類されます。</p>
-    
+    <h1>RACF (Resource Access Control Facility)</h1>
+    <p>z/OS における中核的なセキュリティ・マネージャ製品です。ユーザーの認証（Authentication）とシステム・リソースへのアクセス制御（Authorization）を提供します。Net & Secカテゴリーに分類されます。</p>
+
+    <h2>RACF の役割と仕組み</h2>
+    <p>RACF は「誰が」「どのリソースに」「どのような操作ができるか」というポリシーを一元管理するデータベース（RACF データベース）を持っています。</p>
+    <ul>
+        <li><strong>ユーザーとグループ:</strong> ユーザーIDを管理し、複数のユーザーをグループとして束ねて権限を付与することができます。</li>
+        <li><strong>データセットの保護:</strong> メインフレームのデータセット（ファイル）へのアクセス権限（READ, UPDATE, CONTROL, ALTER）をプロファイルとして定義します。</li>
+        <li><strong>一般リソースの保護 (General Resources):</strong> データセット以外のリソース（例えば、CICSトランザクションの実行、DB2テーブルのアクセス、TSOコマンドの実行権限など）をクラスごとに保護します。</li>
+        <li><strong>SAF (System Authorization Facility) との連携:</strong> z/OS はセキュリティ要求が発生すると SAF インターフェースを呼び出し、SAF が RACF に判定を委譲します（他社製セキュリティ製品の ACF2 や Top Secret もこの仕組みを利用します）。</li>
+    </ul>
+
+    <div class="mermaid">
+    graph TD
+        U[User / Application] -->|Access Request| S(SAF Router)
+        S -->|Query| R(RACF)
+        R -.->|Check Profile| DB[(RACF Database)]
+        R -->|Allow / Deny| S
+        S -->|Response| U
+    </div>
 </body>
 </html>

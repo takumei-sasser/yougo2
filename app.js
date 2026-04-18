@@ -32,12 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'zos-sqa', title: 'SQA', file: 'zos-sqa.html', category: 'Core' },
         { id: 'zos-wait-state', title: 'Wait State', file: 'zos-wait-state.html', category: 'Core' },
         { id: 'zos-ziip', title: 'zIIP', file: 'zos-ziip.html', category: 'Core' },
+        { id: 'zos-z17', title: 'IBM z17', file: 'zos-z17.html', category: 'Core' },
+        { id: 'zos-cod', title: 'Capacity on Demand', file: 'zos-cod.html', category: 'Core' },
 
         // --- Storage ---
         { id: 'zos-dataset', title: 'Dataset', file: 'zos-dataset.html', category: 'Storage' },
         { id: 'zos-pds', title: 'PDS/PDSE', file: 'zos-pds.html', category: 'Storage' },
         { id: 'zos-vsam', title: 'VSAM', file: 'zos-vsam.html', category: 'Storage' },
         { id: 'zos-catalog', title: 'Catalog', file: 'zos-catalog.html', category: 'Storage' },
+        { id: 'zos-catalog-uncatalog', title: 'Catalog / Uncatalog', file: 'zos-catalog-uncatalog.html', category: 'Storage' },
         { id: 'zos-gdg', title: 'GDG', file: 'zos-gdg.html', category: 'Storage' },
         { id: 'zos-lun', title: 'LUN', file: 'zos-lun.html', category: 'Storage' },
         { id: 'zos-lss', title: 'LSS', file: 'zos-lss.html', category: 'Storage' },
@@ -62,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Subsystems ---
         { id: 'zos-sdsf', title: 'SDSF', file: 'zos-sdsf.html', category: 'Subsystems' },
         { id: 'zos-jes2', title: 'JES2', file: 'zos-jes2.html', category: 'Subsystems' },
+        { id: 'zos-zws', title: 'ZWS (TWS/OPC)', file: 'zos-zws.html', category: 'Subsystems' },
         { id: 'zos-jes3', title: 'JES3', file: 'zos-jes3.html', category: 'Subsystems' },
         { id: 'zos-wlm', title: 'WLM', file: 'zos-wlm.html', category: 'Subsystems' },
         { id: 'zos-smf', title: 'SMF', file: 'zos-smf.html', category: 'Subsystems' },
@@ -79,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Middleware ---
         { id: 'zos-db2', title: 'DB2 for z/OS', file: 'zos-db2.html', category: 'Middleware' },
+        { id: 'zos-bind', title: 'BIND / AUTO BIND', file: 'zos-bind.html', category: 'Middleware' },
+        { id: 'zos-load-unload', title: 'LOAD / UNLOAD', file: 'zos-load-unload.html', category: 'Middleware' },
         { id: 'zos-cics', title: 'CICS', file: 'zos-cics.html', category: 'Middleware' },
         { id: 'zos-ims', title: 'IMS', file: 'zos-ims.html', category: 'Middleware' },
         { id: 'zos-mq', title: 'MQ', file: 'zos-mq.html', category: 'Middleware' },
@@ -126,7 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'zos-zfs', title: 'zFS', file: 'zos-zfs.html', category: 'Modernization' },
         { id: 'zos-python', title: 'Python on z/OS', file: 'zos-python.html', category: 'Modernization' },
         { id: 'zos-nodejs', title: 'Node.js on z/OS', file: 'zos-nodejs.html', category: 'Modernization' },
-        { id: 'zos-tfp', title: 'Tailored Fit Pricing', file: 'zos-tfp.html', category: 'Modernization' }
+        { id: 'zos-tfp', title: 'Tailored Fit Pricing', file: 'zos-tfp.html', category: 'Modernization' },
+        { id: 'zos-wlc', title: 'Workload License Charges', file: 'zos-wlc.html', category: 'Modernization' }
     ];
 
     const termList = document.getElementById('term-list');

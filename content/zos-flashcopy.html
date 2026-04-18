@@ -17,7 +17,28 @@
 </head>
 <body class="is-iframe">
     <h1>FlashCopy</h1>
-    <p>FlashCopyは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
-    
+    <p>FlashCopyは、IBM DS8000シリーズなどのエンタープライズ・ストレージにおいて、データを瞬時に複製（ポイント・イン・タイム・コピー）するハードウェア技術です。Storageカテゴリーに分類されます。</p>
+
+    <h2>主な特徴</h2>
+    <ul>
+        <li><strong>瞬時の利用可能状態:</strong> コピー指示（FlashCopy要求）を出した数秒後には、論理的なコピーが完了し、ターゲット・ボリューム（複製先）に対して読み書きが可能になります。</li>
+        <li><strong>バックグラウンド処理:</strong> 実際の物理データのコピー（バックグラウンド・コピー）は、ホストのI/O処理と並行してストレージ内部で徐々に行われます。</li>
+        <li><strong>NOCOPY オプション:</strong> 物理的なデータコピーを行わず、変更されたブロック（トラック）のみを退避・管理するモードもあります。ディスク容量の節約に貢献します。</li>
+        <li><strong>DFSMSdss との統合:</strong> z/OS では、DFSMSdss などのユーティリティから FlashCopy をシームレスに呼び出し、データセット単位でのコピーやバックアップが行えます。</li>
+    </ul>
+
+    <h2>ユースケース</h2>
+    <ul>
+        <li>本番業務を止めずに、一貫性のあるバックアップ（イメージコピー）を取得する。</li>
+        <li>開発・テスト環境向けに、本番データを短時間でクローンする。</li>
+    </ul>
+
+    <div class="mermaid">
+    graph LR
+        A[(Source Volume)] -->|FlashCopy Request| B[(Target Volume)]
+        A -.->|Background Copy| B
+        C[Application] -->|Read/Write| A
+        D[Backup Tool] -->|Read| B
+    </div>
 </body>
 </html>

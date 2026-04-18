@@ -16,8 +16,23 @@
     </script>
 </head>
 <body class="is-iframe">
-    <h1>PPRC (Mirroring)</h1>
-    <p>PPRC (Mirroring)は、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
-    
+    <h1>PPRC (Peer-to-Peer Remote Copy)</h1>
+    <p>IBM DS8000 などのエンタープライズ・ストレージ間で、ボリュームのデータをネットワーク越しにリアルタイムで同期・複製するハードウェア機能です。Storageカテゴリーに分類されます。</p>
+
+    <h2>主な特徴 (Metro Mirror)</h2>
+    <p>PPRC という名前はかつての呼び方であり、現在では同期型の <strong>Metro Mirror (メトロ・ミラー)</strong>、非同期型の <strong>Global Mirror (グローバル・ミラー)</strong> などの総称として使われます。</p>
+    <ul>
+        <li><strong>完全なデータ同期 (RPO=0):</strong> ホスト（z/OS）がプライマリ・ストレージにデータを書き込むと、プライマリはセカンダリのストレージへの書き込み完了を待ってからホストに応答を返します。これにより、両サイト間でのデータの一貫性が完全に保証されます。</li>
+        <li><strong>距離の制限:</strong> 光ファイバーを利用した場合、同期型 (Metro Mirror) は遅延の問題があるため、通常は同一キャンパス内や数十～数百km圏内の近距離サイト間で利用されます。</li>
+        <li><strong>HyperSwap の基盤:</strong> z/OS の高可用性機能である HyperSwap と連携し、プライマリ・ストレージ障害時に瞬時に（アプリケーションにエラーを返すことなく）セカンダリ・ストレージへ処理を切り替えることが可能です。</li>
+    </ul>
+
+    <div class="mermaid">
+    graph LR
+        H[z/OS Host] -->|1. Write| P[(Primary Storage)]
+        P -->|2. Sync Copy| S[(Secondary Storage)]
+        S -.->|3. Ack| P
+        P -.->|4. Ack| H
+    </div>
 </body>
 </html>

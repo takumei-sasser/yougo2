@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>LOAD / UNLOAD</h1>
+    <p>z/OS 上のデータベース（主に Db2）やデータセット間での、大量データの高速な取り込みや抽出を行うためのユーティリティ機能です。</p>
+
+    <h2>Db2 LOAD ユーティリティ</h2>
+    <p>シーケンシャル・データセット（順次ファイル）などから、Db2 のテーブルへデータを高速に格納します。INSERT 文を使用するよりも圧倒的に高速で、初期データ移行や日次/月次のバッチ処理で多用されます。</p>
+    <ul>
+        <li><strong>REPLACE:</strong> 既存のテーブルデータをすべて消去してロードします。</li>
+        <li><strong>RESUME YES:</strong> 既存のデータを残しつつ、末尾にデータを追加します。</li>
+        <li><strong>LOG NO:</strong> ロード処理中にログを出力せず、パフォーマンスを最大化します（後でイメージコピーを取る必要があります）。</li>
+    </ul>
+
+    <h2>Db2 UNLOAD ユーティリティ</h2>
+    <p>Db2 のテーブルからシーケンシャル・データセットなどへ、データを高速に抽出します。SELECT 文を使用するより効率的に大量のデータをファイル化できます。</p>
+    <ul>
+        <li>他のシステムへのデータ転送や、バックアップ・リストアプロセスの一環、データ移行時の抽出などに利用されます。</li>
+        <li>イメージコピー（フルバックアップ）から直接アンロードすることも可能で、オンライン業務への影響を抑えることができます。</li>
+    </ul>
+
+    <h2>関連ユーティリティ</h2>
+    <p>Db2 に限らず、VSAM データセット間での IDCAMS による <code>REPRO</code> や、DB2 以外のサードパーティ製ツール（例: BMC Unload Plus, IBM Db2 High Performance Unload）もこの役割を担います。</p>
+
+    <div class="mermaid">
+    graph LR
+        A[Sequential\nDataset] -->|Db2 LOAD| B[(Db2 Table)]
+        B -->|Db2 UNLOAD| C[Sequential\nDataset]
+        D[(Image Copy)] -.->|UNLOAD from IC| C
+    </div>
+</body>
+</html>

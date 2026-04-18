@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>BIND / AUTO BIND</h1>
+    <p>Db2 for z/OS 環境において、アプリケーション・プログラム内の SQL 文を実行可能なアクセス・パス（プランやパッケージ）に変換する一連のプロセスを指します。Application/Database カテゴリーに分類されます。</p>
+
+    <h2>BIND プロセスの概要</h2>
+    <p>Db2 のアプリケーションを開発・実行する場合、ソースコードのコンパイル時にプリコンパイルが行われ、<strong>DBRM（Database Request Module）</strong>という SQL 要素の塊が生成されます。この DBRM を Db2 カタログに登録し、最適なアクセス・パスを決定するプロセスが <strong>BIND（バインド）</strong> です。</p>
+    <ul>
+        <li><strong>アクセス・パスの最適化（オプティマイザ）:</strong> CPU コスト、I/O コスト、インデックスの統計情報などを元に、最も効率よくデータを取得できるパスを算出します。</li>
+        <li><strong>パッケージの生成:</strong> BIND が完了すると、Db2 内部に実行可能オブジェクトとして「パッケージ」が生成されます。</li>
+        <li><strong>特権のチェック:</strong> BIND 実行時に、テーブルに対するアクセス権限等の検証が含まれることがあります。</li>
+    </ul>
+
+    <h2>AUTO BIND（自動バインド）とは</h2>
+    <p>あらかじめ BIND されていたパッケージが無効化された場合（例：参照していたインデックスが削除された、テーブルが DROP & RECREATE された等）、Db2 はプログラムの実行時に動的にパッケージを再バインドしようと試みます。この仕組みを <strong>AUTO BIND</strong> と呼びます。</p>
+    <p><strong>注意点:</strong> AUTO BIND は実行時にオーバーヘッドを伴い、トランザクションの遅延や、予期しないアクセス・パスの変動を招くリスクがあるため、運用環境では計画的な手動 REBIND（再バインド）を実施することがベストプラクティスとされます。</p>
+
+    <div class="mermaid">
+    graph TD
+        A[ソースコード\n + SQL] -->|Precompile| B(DBRM)
+        A -->|Compile| C(Load Module)
+        B -->|BIND| D[(Db2 Catalog\nPackage)]
+        D -.->|Execute| E{Runtime}
+        C -->|Execute| E
+        E -.->|Invalidate| F[AUTO BIND Trigger]
+        F --> D
+    </div>
+
+</body>
+</html>

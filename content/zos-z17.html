@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>IBM z17 (次世代 IBM Z)</h1>
+    <p>IBM zSystems のフラグシップサーバー「IBM z16」に続く、将来を見据えた次世代メインフレームの総称・コンセプトです。Hardwareカテゴリーに分類されます。</p>
+
+    <h2>次世代メインフレームの方向性</h2>
+    <p>技術の進化に伴い、将来のメインフレーム（z17およびそれ以降）は主に以下の領域の機能拡張が予想、またはアナウンスの方向性として位置づけられます。</p>
+    <ul>
+        <li><strong>AI推論のさらなる統合 (Telum II / Spyre Accelerator):</strong> オンチップAIアクセラレータを進化させ、LLM（大規模言語モデル）や生成AIをメインフレームの基幹トランザクション内で遅延なく処理する能力の向上。</li>
+        <li><strong>量子耐性暗号 (Quantum-Safe):</strong> 暗号化技術の陳腐化に備え、量子コンピュータによる攻撃にも耐えうる暗号アルゴリズム（Kyber / Dilithiumなど）へのハードウェアレベルでの完全対応。</li>
+        <li><strong>ハイブリッドクラウド・レジリエンス:</strong> ゼロトラスト・セキュリティの強化と、Zaas（Z as a Service）やクラウドネイティブな開発（Red Hat OpenShift統合）のさらなる親和性向上。</li>
+    </ul>
+
+    <h2>Hardware インフラとしての役割</h2>
+    <p>物理的なプロセッサー性能向上（クロックやキャッシュ）に加え、巨大なシステムメモリとI/O帯域幅を武器に、企業の最も重要な「System of Record (SoR)」基盤を担い続ける核となります。</p>
+
+</body>
+</html>

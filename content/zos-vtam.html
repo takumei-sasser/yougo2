@@ -16,8 +16,26 @@
     </script>
 </head>
 <body class="is-iframe">
-    <h1>VTAM</h1>
-    <p>VTAMは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Net & Secカテゴリーに分類されます。</p>
-    
+    <h1>VTAM (Virtual Telecommunications Access Method)</h1>
+    <p>メインフレームにおける SNA（Systems Network Architecture）ネットワークの中核を担う通信アクセス方式です。Net & Secカテゴリーに分類されます。</p>
+
+    <h2>役割と特徴</h2>
+    <p>VTAM は、アプリケーション（例: CICS, IMS, TSO）とネットワーク上の端末や他のシステムを接続する司令塔です。</p>
+    <ul>
+        <li><strong>SNA の実装:</strong> ネットワークリソース（論理装置 LU、物理装置 PU）の定義、セッションの確立、ルーティング制御などを司ります。</li>
+        <li><strong>APPN (Advanced Peer-to-Peer Networking):</strong> 従来の階層型ネットワークから、より動的でルーティングの柔軟性が高い通信をサポートします。</li>
+        <li><strong>TCP/IP との統合 (Enterprise Extender):</strong> 現在のメインフレーム・ネットワークは IP ベースが主流ですが、従来の SNA アプリケーションを改修せずに IP ネットワーク上で通信させるためのカプセル化（UDP/IP 上に SNA パケットを乗せる）機能も担っています。</li>
+    </ul>
+
+    <h2>Communication Server との位置づけ</h2>
+    <p>現在、z/OS において VTAM と TCP/IP は「z/OS Communications Server」という統合的なネットワーキング基盤の双璧をなすコンポーネントとして提供されています。システム起動時には TCP/IP の前に必ず VTAM が起動されている必要があります。</p>
+
+    <div class="mermaid">
+    graph TD
+        A[z/OS Applications\nCICS/IMS/TSO] --> B(VTAM)
+        B -->|SNA| C(Enterprise Extender)
+        C --> D(TCP/IP Stack)
+        D --> E[IP Network]
+    </div>
 </body>
 </html>
