@@ -19,5 +19,15 @@
     <h1>HiperSockets</h1>
     <p>HiperSocketsは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Net & Secカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>HiperSockets</strong> は、同一の物理筐体（CPC）内で稼働する複数のLPAR間で、極めて高速かつセキュアなTCP/IP通信を実現する内部仮想ネットワーク機能です。</p>
+        <ul>
+            <li><strong>メモリ間転送 (Memory-to-Memory transfer):</strong> 実際の物理ケーブル、スイッチ、あるいは外部ネットワークアダプタ（OSAなど）を経由せず、メインフレーム内部のシステムメモリを介して直接データを転送します。これにより、<strong>マイクロ秒単位の超低遅延</strong> とバススピードでの通信帯域を提供します。</li>
+            <li><strong>iQDIO (Internal Queued Direct I/O):</strong> OSA-Expressで使われるQDIOアーキテクチャを内部通信向けに最適化したもので、CPUへの割り込みオーバーヘッドを最小限に抑えながら高可用なデータキューイングを行います。</li>
+            <li><strong>アーキテクチャの柔軟性:</strong> z/OSだけでなく、z/VM、Linux on IBM Zなど多様なOS間で透過的に通信が可能です。また、IPルーティングベースの <strong>Layer 3</strong> モードだけでなく、同一サブネットとして機能する <strong>Layer 2</strong> モードもサポートしているため、構成の自由度が高くなっています。</li>
+            <li><strong>セキュリティと分離:</strong> 仮想ネットワークは筐体外に一切トラフィックを出さないため、盗聴や外部からの直接的なサイバー攻撃に対して本質的に安全です。データベースサーバーとアプリケーション・サーバー（Linux等）を同一筐体内で連携させるシステム間通信（Tier-to-Tier）に最適です。</li>
+        </ul>
+    </section>
 </body>
 </html>
