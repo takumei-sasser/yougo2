@@ -19,5 +19,15 @@
     <h1>IEBCOPY</h1>
     <p>IEBCOPYは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>IEBCOPY</strong> は、区分データセット（PDS）および拡張区分データセット（PDSE）の管理に特化した強力なユーティリティです。</p>
+        <ul>
+            <li><strong>ライブラリのコピ：</strong> PDS/PDSE間で複数のメンバーを一括でコピー（COPY）でき、コピーと同時にメンバー名を変更（RENAME）したり、特定のメンバーを除外（EXCLUDE）したりすることが可能です。</li>
+            <li><strong>COMPRESS処理:</strong> 従来のPDSで発生する「ガス（古いデータの残骸）」を取り除き、空き領域を結合・再利用可能にするための <code>COPY INDD=MYPDS,OUTDD=MYPDS</code>（入力と出力に同じデータセットを指定）操作は、システム管理の必須タスクです。</li>
+            <li><strong>ロードモジュールの管理:</strong> オブジェクトコードやリンク・エディット済みプログラムのコピーにおいて、プログラムの構造やディレクトリ情報（TTR等）を破壊させずに安全に移動できる唯一の標準ユーティリティです。</li>
+            <li><strong>Unload / Load:</strong> PDS全体をシーケンシャルデータセット（順次ファイル）の形式へ変換（Unload）し、磁気テープへの退避や他システムへの転送に使用します。その後、再度PDSへ復元（Load）できます。</li>
+        </ul>
+    </section>
 </body>
 </html>

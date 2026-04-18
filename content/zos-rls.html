@@ -19,5 +19,15 @@
     <h1>VSAM RLS</h1>
     <p>VSAM RLSは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>VSAM RLS (Record Level Sharing) は、並列シスプレックス環境において、複数のz/OSシステム間でのデータ共用を劇的に高度化させる機能です。</p>
+        <ul>
+            <li><strong>CF (Coupling Facility) の活用:</strong> 共有データのバッファ整合性（Coherency）を保つため、CF内の <strong>Cache Structure</strong> を使用します。これにより、あるシステムで更新されたデータが即座に他システムで認識されます。</li>
+            <li><strong>細粒度ロッキング:</strong> 従来のデータセット単位やCI単位のロックではなく、個別の <strong>レコード単位</strong> でのロックを <strong>Lock Structure</strong> を通じて管理します。これにより、オンライン処理とバッチ処理の並行実行能力が向上します。</li>
+            <li><strong>SMSVSAM アドレス空間:</strong> 各システム上の <code>SMSVSAM</code> サーバーが、CFとの通信やリクエストのキューイングを制御します。</li>
+            <li><strong>可用性の継続:</strong> いずれかのシステムがダウンしても、CF内のロック情報は維持されるため、整合性を保ったまま他システムでの継続実行が可能です。</li>
+        </ul>
+    </section>
 </body>
 </html>

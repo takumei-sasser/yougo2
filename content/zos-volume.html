@@ -19,5 +19,20 @@
     <h1>Volume (VOLSER)</h1>
     <p>Volume (VOLSER)は、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>z/OSにおいて、物理または論理的なディスク装置を識別する単位がボリュームであり、6文字の英数字からなる <strong>VOLSER (Volume Serial Number)</strong> で識別されます。</p>
+        <ul>
+            <li><strong>ボリューム・ステータス:</strong> 
+                <ul>
+                    <li><strong>PRIVATE:</strong> 特定のデータセット割り当てにのみ使用される状態。</li>
+                    <li><strong>PUBLIC/STORAGE:</strong> システムが一時ファイルや新しいデータセットの自動割り当てに使用可能な状態。</li>
+                </ul>
+            </li>
+            <li><strong>SMSストレージグループ:</strong> 複数のボリュームをまとめて「ストレージグループ」として定義し、SMSが空き容量やパフォーマンス目標に基づいて最適なボリュームを自動選択します。</li>
+            <li><strong>ボリュームの初期化:</strong> <code>ICKDSF</code> ユーティリティを使用してボリュームを初期化（Init）し、VTOCの場所やVOLSERを設定します。</li>
+            <li><strong>マウント属性:</strong> <strong>Permanently Resident</strong> (常にシステムに認識されている)、<strong>Reserved</strong> (特定の用途に予約)、および <strong>Removable</strong> (着脱可能、現代では稀) の属性があります。</li>
+        </ul>
+    </section>
 </body>
 </html>

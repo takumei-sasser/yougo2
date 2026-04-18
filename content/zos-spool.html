@@ -19,5 +19,15 @@
     <h1>Spool</h1>
     <p>Spoolは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Subsystemsカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>SPOOL (Simultaneous Peripheral Operations On-Line)</strong> は、ジョブの入力JCL、実行中のシステムメッセージ、および出力データ（SYSOUT）を一時的に蓄積するための巨大なDASD領域です。</p>
+        <ul>
+            <li><strong>SPOOLボリューム:</strong> JES2では <code>HASPACE</code> データセットという特別な形式でフォーマットされた専用ボリュームにデータが格納されます。複数のボリューム（SPOOL1, SPOOL2等）をシステム全体（MAS）で共有します。</li>
+            <li><strong>Track Group (TG):</strong> SPOOL上の割り当ての最小単位です。ジョブが大量の出力を発生させるとTGが次々と割り当てられ、SPOOLの枯渇（Spool shortage）を引き起こす原因となります。</li>
+            <li><strong>パージ (Purge):</strong> 出力が印刷されるか、または不要と判断されてユーザーから削除された場合、JES2はパージ・プロセッサーを通じて速やかに使用済みのTGをフリープールに返却します。</li>
+            <li><strong>スプール・オフロード:</strong> 重要なSPOOLデータを磁気テープや別のDASDに退避・復元することで、SPOOL領域の枯渇防止や過去のジョブ出力のアーカイブを行うことができます。</li>
+        </ul>
+    </section>
 </body>
 </html>

@@ -26,5 +26,16 @@
     PR --> L2[LPAR 2: Linux on z]
     </div>
 
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>LPARの制御基盤である<strong>PR/SM (Processor Resource/Systems Manager)</strong>は、ハードウェアのマイクロコードとして実装されたType-1ハイパーバイザーです。単なる仮想化を超え、厳格なリソース分離とパフォーマンス制御を可能にします。</p>
+        <ul>
+            <li><strong>論理プロセッサのディスパッチ:</strong> PR/SMは、LPARに割り当てられた「論理プロセッサ (LP)」を「物理プロセッサ (CP)」にマッピングします。この際、LPARの重量（Weight）に基づいた公平な共有アルゴリズムが用いられます。</li>
+            <li><strong>Capping (キャップ):</strong> ワークロードが定義された上限を超えないよう制限する機能です。Hard Cappingのほか、WLMと連携して4時間移動平均を監視するSoft Capping（Group Capacity）などが存在します。</li>
+            <li><strong>HiperDispatch:</strong> 物理プロセッサのキャッシュ効率を最大化するため、PR/SMとz/OS WLMが連携し、特定の論理プロセッサを特定の物理プロセッサに固定（垂直的なアフィニティ）して実行する最適化技術です。</li>
+            <li><strong>LPAR内通信:</strong> HiperSocketsを使用することで、異なるLPAR間の通信をメモリ速度で、かつ外部ネットワークにパケットを出さずにセキュアに実行可能です。</li>
+        </ul>
+    </section>
+
 </body>
 </html>

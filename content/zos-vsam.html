@@ -19,5 +19,15 @@
     <h1>VSAM</h1>
     <p>Virtual Storage Access Method。高性能なファイル管理方式で、KSDS, ESDS, RRDSなどの種類があります。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>VSAMは、レコードではなく <strong>CI (Control Interval)</strong> と呼ばれる論理的なブロックを最小のI/O単位として扱います。複数のCIが組み合わさって <strong>CA (Control Area)</strong> を形成します。</p>
+        <ul>
+            <li><strong>KSDS (Key Sequenced Data Set):</strong> キーによってレコードを管理する最も一般的な形式です。<strong>Index Component</strong>（キー情報を保持）と <strong>Data Component</strong>（実データを保持）の2層構造で構成されます。</li>
+            <li><strong>CI/CA Split:</strong> データの挿入時にCI内の空き領域が不足すると、CIが分割（Split）されます。CA全体が満杯になるとCA Splitが発生し、パフォーマンスに影響を与えます。これを防ぐために適切な <strong>FREESPACE</strong> 設定が重要です。</li>
+            <li><strong>RLS (Record Level Sharing):</strong> カップリング・ファシリティー（CF）を使用して、シスプレックス内の複数のLPARから同一のVSAMデータセットに対してレコードレベルでの更新共有を可能にする高度な機能です。</li>
+            <li><strong>バッファリング管理:</strong> <code>AMP</code> パラメータ等を使用して、<strong>LSR</strong> (Local Shared Resources) や <strong>NSR</strong> (Non-Shared Resources) を選択し、メモリ使用量とI/O速度のトレードオフを最適化します。</li>
+        </ul>
+    </section>
 </body>
 </html>

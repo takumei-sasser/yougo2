@@ -19,5 +19,15 @@
     <h1>IDCAMS</h1>
     <p>IDCAMSは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>IDCAMSは <strong>Access Method Services (AMS)</strong> と呼ばれる非常に強力な多機能ユーティリティで、特にVSAMデータセットとカタログの管理において中心的な役割を果たします。</p>
+        <ul>
+            <li><strong>VSAMクラスター管理:</strong> <code>DEFINE CLUSTER</code> コマンドを使用して、VSAMのデータ部とインデックス部を個別に制御し、CIサイズ、FREE SPACE、SHARE OPTIONSなどを詳細に定義します。</li>
+            <li><strong>データの変換と複製:</strong> <code>REPRO</code> コマンドは、VSAMからPS（順次データセット）、またはその逆へのデータコピーを高速に行います。この際、データのソートやフィルタリングも可能です。</li>
+            <li><strong>カタログ操作:</strong> マスターカタログやユーザーカタログの定義、および <code>DEFINE ALIAS</code> を使用したHLQ（High Level Qualifier）とユーザーカタログの紐付けなど、システム構成に直結する操作を担当します。</li>
+            <li><strong>GDG管理:</strong> <code>DEFINE GENERATIONDATAGROUP</code> コマンドにより、世代管理データセットのベース定義を作成します。</li>
+        </ul>
+    </section>
 </body>
 </html>

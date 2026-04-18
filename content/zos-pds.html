@@ -19,5 +19,15 @@
     <h1>PDS/PDSE</h1>
     <p>Partitioned Data Set。一つのデータセット内に「メンバー」として複数のファイルを格納できるライブラリ形式。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>PDSは、データの格納領域と、各メンバーへの位置を示す「ディレクトリ」領域から構成されます。z/OS のプログラムライブラリや設定ファイル（PARMLIB等）の標準的な形式です。</p>
+        <ul>
+            <li><strong>ディレクトリとTTR:</strong> ディレクトリにはメンバー名と、そのメンバーのデータが開始されるDASD上の位置情報（<strong>TTR</strong>: Track/Tile/Record）が保持されます。</li>
+            <li><strong>PDSのフラグメンテーション:</strong> 従来のPDSでは、メンバーの削除や更新（上書き）を繰り返すと、古いデータ領域が再利用されず「ガス（Gas）」と呼ばれる空き領域が発生します。これを取り除くには <code>IEBCOPY</code> 等による <strong>COMPRESS</strong> 処理が必須です。</li>
+            <li><strong>PDSE (PDS Extended):</strong> PDSの欠点を解消した形式で、ディレクトリ領域が動的に拡張され、COMPRESS処理も不要（システムが自動で領域を再利用）です。また、メンバごとに「世代」を管理する機能も備えています。</li>
+            <li><strong>メンバーエイリアス:</strong> <code>IDCAMS</code> やバインダー（Linkage Editor）を使用して、一つの実体に複数の名前（エイリアス）を付けることが可能です。</li>
+        </ul>
+    </section>
 </body>
 </html>

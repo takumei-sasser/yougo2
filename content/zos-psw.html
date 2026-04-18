@@ -19,5 +19,20 @@
     <h1>PSW</h1>
     <p>Program Status Word。現在実行中の命令のアドレスやプログラムの状態（キー、マスク等）を保持する特殊なレジスタ。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>z/ArchitectureにおけるPSWは128ビット（16バイト）構成のデータ構造で、CPUの動的な作業状態を一元管理します。</p>
+        <ul>
+            <li><strong>Instruction Address:</strong> 次に実行すべき命令の仮想アドレス。PSWのビット64-127がこれに相当します。</li>
+            <li><strong>PSW Key:</strong> ビット8-11に保持される4ビットの情報。メモリアクセス時に、対象メモリ領域のストレージキー（Storage Key）と比較され、保護違反をチェックします。Key 0はすべての領域にアクセス可能な特権キーです。</li>
+            <li><strong>Status Bits:</strong> 
+                <ul>
+                    <li><strong>Problem State:</strong> ビット15。0ならスーパーバイザー（特権）状態、1なら問題プログラム状態。</li>
+                    <li><strong>AMODE (Addressing Mode):</strong> ビット31 (1=31-bit) および ビット32 (1=64-bit)。プログラムがどのアドレス指定モードで動作しているかを示します。</li>
+                </ul>
+            </li>
+            <li><strong>Condition Code (CC):</strong> ビット18-19。直前の演算結果（ゼロ、正、負、オーバーフロー等）を保持し、条件分岐命令（BC）で使用されます。</li>
+        </ul>
+    </section>
 </body>
 </html>

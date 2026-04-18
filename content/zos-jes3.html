@@ -19,5 +19,15 @@
     <h1>JES3</h1>
     <p>JES3は、z/OS（メインフレーム）を支える重要な技術要素の一つです。Subsystemsカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>JES3は、JES2と同様にジョブの受付と管理を行いますが、より集中管理に特化したアーキテクチャを持ちます（現在はJES2への統合が進んでいます）。</p>
+        <ul>
+            <li><strong>Global/Local構成:</strong> 複数のz/OSシステムのうち、一つを「Global」として設定し、すべてのジョブスケジューリングとデバイス割り当てを一元管理します。他のシステムは「Local」として動作します。</li>
+            <li><strong>MDS (Main Device Scheduling):</strong> ジョブが実行される「前」に、必要なテープやDASD、データセットが利用可能かどうかをGlobalが全システム分チェックし、確保します。これにより、実行中にリソース不足でジョブが停止することを防ぎます。</li>
+            <li><strong>JES3特有の制御:</strong> JCL内に <code>//*</code> で始まる特殊なステートメント（例：<code>//*MAIN</code>）を記述することで、実行するLPARの指定や依存関係を詳細に定義できます。</li>
+            <li><strong>動的スケジューリング:</strong> ワークロードの状況に応じて、JES3が最適なシステムを選択してジョブを投入する高度な機能を備えています。</li>
+        </ul>
+    </section>
 </body>
 </html>

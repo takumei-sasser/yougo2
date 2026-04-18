@@ -19,5 +19,20 @@
     <h1>DFSMShsm</h1>
     <p>Hierarchical Storage Manager。データのバックアップや有効期限切れデータの削除、階層管理（マイグレーション）を自動化するツール。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>DFSMShsmは、データの参照頻度や重要度に基づいて、最適な記録媒体へデータを移動させる自動階層管理システムです。</p>
+        <ul>
+            <li><strong>マイグレーション階層:</strong> 
+                <ul>
+                    <li><strong>Level 0 (L0):</strong> 通常運用中のDASDボリューム。</li>
+                    <li><strong>Migration Level 1 (ML1):</strong> 参照頻度が低くなったデータを圧縮して格納するDASDボリューム。</li>
+                    <li><strong>Migration Level 2 (ML2):</strong> さらに長期保管が必要なデータをテープ媒体やクラウド、仮想テープ（TS7700等）へ移動します。</li>
+                </ul>
+            </li>
+            <li><strong>自動化サイクル:</strong> 毎日決まった時間に実行される「Primary Space Management」や、ボリュームの空き容量が閾値を下回った際に動的に実行される「Interval Migration」があります。</li>
+            <li><strong>高速リカバリ:</strong> SMS管理外のデータセットであっても、DFSMShsmがカタログ情報を維持しているため、ユーザーはデータの所在を意識せずに <code>HRECALL</code> コマンド等で即座に元のL0ボリュームへ戻すことができます。</li>
+        </ul>
+    </section>
 </body>
 </html>

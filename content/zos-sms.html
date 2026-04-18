@@ -19,5 +19,21 @@
     <h1>SMS</h1>
     <p>Storage Management Subsystem。ストレージの割り振りや属性（性能、寿命、バックアップ）を自動管理する仕組み。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>SMSは、DFSMSファミリーの中核として、物理的なストレージ管理（どのボリュームに置くか等）をOSが自動的に決定する「ポリシーベース」の管理手法を提供します。</p>
+        <ul>
+            <li><strong>管理ポリシーの構成要素:</strong> 
+                <ul>
+                    <li><strong>Data Class:</strong> データセットの論理属性（RECFM, LRECL, VSAMタイプ等）。</li>
+                    <li><strong>Storage Class:</strong> 必要なサービスレベル（応答時間（MSR）、可用性等）。</li>
+                    <li><strong>Management Class:</strong> データの寿命（保存期間、バックアップ頻度等）。</li>
+                    <li><strong>Storage Group:</strong> 物理的なボリュームの集合体。</li>
+                </ul>
+            </li>
+            <li><strong>ACS (Automatic Class Selection) ルーチン:</strong> データセット作成時、システムはあらかじめ定義された <strong>ACSルーチン</strong>（IF/THENロジック）を実行し、データセット名やHLQ等に基づいて最適なクラスを決定します。</li>
+            <li><strong>コントロールデータセット:</strong> SMSの設定情報は <strong>SCDS</strong> (Source Control Data Set) に保持され、アクティブ化されると <strong>ACDS</strong> (Active Control Data Set) に反映されます。複数システム間では <strong>COMMDS</strong> (Communication Data Set) を通じて状態が同期されます。</li>
+        </ul>
+    </section>
 </body>
 </html>

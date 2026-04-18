@@ -27,5 +27,16 @@
     Out --> Purge[Purge]
     </div>
 
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>JES2は、シスプレックス環境におけるジョブの「門番」であり、リソースのスケジューリングと各処理フェーズのオーケストレーションを行います。</p>
+        <ul>
+            <li><strong>MAS (Multi-Access Spool):</strong> 複数のz/OSシステムが単一のSPOOL（作業用ディスク）を共有し、どのシステムからでもジョブの投入や結果の参照を可能にする仕組みです。</li>
+            <li><strong>チェックポイントデータセット:</strong> 全ジョブの状態やリソース利用状況を管理する共有データセットです。全システムがこの情報を参照・更新することで、MAS内での一貫性を保ちます。</li>
+            <li><strong>JES2コマンド:</strong> 演算子やシステム管理者は <code>$</code> から始まるコマンド（例：<code>$DN</code>, <code>$AJ</code>）を使用して、ジョブの表示や操作を行います。</li>
+            <li><strong>WLMとの連携:</strong> モダンな運用では、イニシエータの開始・停止をWLMに任せる「WLM管理イニシエータ」が主流であり、JES2はWLMからの要求に応じてジョブを送り出します。</li>
+        </ul>
+    </section>
+
 </body>
 </html>

@@ -19,5 +19,15 @@
     <h1>TCB</h1>
     <p>Task Control Block。z/OSにおける「タスク」の情報を管理する制御ブロック。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>TCBは、z/OSにおけるディスパッチ可能な最小単位の一つであり、プログラムの実行状態とリソース所有権を一元管理します。</p>
+        <ul>
+            <li><strong>タスク階層構造:</strong> アドレス空間内で最初のタスク（Job Step TCB）から、<code>ATTACH</code> マクロによってサブタスクが生成され、ツリー構造を形成します。</li>
+            <li><strong>実行の制御:</strong> TCBは複数の <strong>RB (Request Block)</strong> をチェーン状に保持し、サブルーチン呼び出しやSVC（Supervisor Call）の状態を追跡します。</li>
+            <li><strong>リカバリとリソース保護:</strong> プログラム異常終了時、システムはTCBに紐付いた <strong>ESTAE</strong> などのリカバリルーチンを駆動します。また、タスクが所有するENQ（排他制御）リソースなどは、タスク終了時にシステムによって自動的にクリーンアップされます。</li>
+            <li><strong>ディスパッチング優先度:</strong> TCBの実行優先度は、WLMの設定に基づく <strong>DP (Dispatching Priority)</strong> によって決定されます。SRBは一般に全てのTCBよりも高い優先度を持ちますが、WLM管理下のEnclave SRBとは競合が発生します。</li>
+        </ul>
+    </section>
 </body>
 </html>

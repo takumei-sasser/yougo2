@@ -19,5 +19,20 @@
     <h1>SDSF</h1>
     <p>SDSFは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Subsystemsカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>SDSF (System Display and Search Facility)</strong> は、z/OSシステムの稼働状況やジョブの出力を監視・制御するための、最も標準的で強力なユーザーインターフェースです。</p>
+        <ul>
+            <li><strong>主要パネル (コマンド):</strong>
+                <ul>
+                    <li><strong>DA (Display Active):</strong> 現在実行中のジョブやアドレス空間のCPU使用率、ASID、WLMの状況などをリアルタイム表示。</li>
+                    <li><strong>I / ST / O:</strong> それぞれジョブのInputキュー、Status（全ジョブ）、Outputキューを表示し、出力データのブラウズやパージ（削除）が可能。</li>
+                    <li><strong>LOG:</strong> システムメッセージログ（SYSLOG等）を表示し、システム全体のイベントを確認。</li>
+                </ul>
+            </li>
+            <li><strong>コマンド発行:</strong> SDSFのコマンドラインから、JESやz/OSのシステムコマンドを直接発行することが可能です（権限が必要）。</li>
+            <li><strong>プログラム制御:</strong> ISPFの対話型画面だけでなく、<strong>REXX</strong> や近年では <strong>Java</strong>、<strong>Python</strong> のAPIを通じてSDSFの機能を呼び出すことができ、システム管理タスクの自動化に広く利用されています。</li>
+        </ul>
+    </section>
 </body>
 </html>

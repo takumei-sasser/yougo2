@@ -19,5 +19,21 @@
     <h1>GDG</h1>
     <p>Generation Data Group。世代管理を行うデータセット群（G0001V00など）。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>GDGは、同じ目的のデータセットを時間軸（世代）で管理するための仕組みです。日次バックアップやログの保存に不可欠な機能です。</p>
+        <ul>
+            <li><strong>物理名の命名規則:</strong> 各世代の実体は <code>DSNAME.GnnnnVmm</code> という形式で作成されます。<code>nnnn</code> は4桁の世代番号、<code>mm</code> はバージョン番号（通常は00）です。</li>
+            <li><strong>相対世代番号:</strong> JCL内では <code>DSNAME(0)</code> で最新世代、<code>DSNAME(+1)</code> で新規作成世代、<code>DSNAME(-1)</code> で一つ前の世代を指し示すことができます。ジョブ終了時にシステムが自動的に絶対番号へ更新（Roll-in）します。</li>
+            <li><strong>GDGベース定義:</strong> <code>IDCAMS</code> の <code>DEFINE GENERATIONDATAGROUP</code> コマンドにより定義します。ここで管理する最大世代数（LIMIT）を指定します。</li>
+            <li><strong>管理オプション:</strong> 
+                <ul>
+                    <li><strong>EMPTY/NOEMPTY:</strong> 世代上限に達した際、すべての旧世代を一括削除するか、最古の1枚のみ削除するか。</li>
+                    <li><strong>SCRATCH/NOSCRATCH:</strong> 世代管理から外れた際の物理削除の有無。</li>
+                </ul>
+            </li>
+            <li><strong>GDG Extended:</strong> 近年の拡張により、従来255個だった世代上限が最大999個にまで拡張されています。</li>
+        </ul>
+    </section>
 </body>
 </html>

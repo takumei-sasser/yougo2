@@ -19,5 +19,20 @@
     <h1>DFSMS</h1>
     <p>z/OSのストレージ管理の中核を担うソフトウェア製品群。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>DFSMS (Data Facility Storage Management Subsystem) は、単一の製品ではなく、z/OSのデータ管理を司る強固なソフトウェア群の総称です。</p>
+        <ul>
+            <li><strong>主要コンポーネント:</strong> 
+                <ul>
+                    <li><strong>DFSMSdfp:</strong> 基本機能。アクセス方式（VSAM等）やカタログ管理、SMSエンジンを提供します。</li>
+                    <li><strong>DFSMSdss:</strong> データのコピー、ダンプ、移動、空き領域の最適化（DEFRAG）を高速に実行します。</li>
+                    <li><strong>DFSMShsm:</strong> 低頻度アクセスのデータをテープ等の低コスト媒体へ自動移動する階層管理。</li>
+                    <li><strong>DFSMSrmm:</strong> テープ媒体のリサイクルや寿命を管理するリムーバブルメディア管理。</li>
+                </ul>
+            </li>
+            <li><strong>データ管理の抽象化:</strong> 以前の「トラック」や「シリンダー」といった物理属性を意識した管理から、SMSによる論理的なポリシーベース管理への転換を可能にしました。</li>
+        </ul>
+    </section>
 </body>
 </html>

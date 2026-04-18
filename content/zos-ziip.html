@@ -33,5 +33,16 @@
         <li><strong>パフォーマンス向上:</strong> 本体のプロセッサ（GP）の負荷を軽減し、システム全体の効率を高めます。</li>
         <li><strong>自動化:</strong> OS（z/OS）が自動的に適切な処理をzIIPに振り分けます。</li>
     </ul>
+
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>zIIPは、<strong>SRB (Service Request Block)</strong> モードで動作する特定のワークロードをオフロードするために設計されています。一般的なTSOユーザーのタスク（TCB）が直接zIIPで動くことはありません。</p>
+        <ul>
+            <li><strong>Enclave (アンクレイブ):</strong> Db2の分散クエリ計算などは、Enclaveと呼ばれるWLMの管理単位として扱われ、その一部（通常は最大100%に近い割合）がzIIPにスイッチして実行されます。</li>
+            <li><strong>IIPHONORPRIORITY:</strong> SYS1.PARMLIB(LOADxx) や WLMの設定で、GPに余裕がある場合にzIIPワークロードをGPで助けるかどうかを制御します。これをNOに設定すると、zIIPワークロードはzIIPプロセッサが空くまで待機し、GPのリソースを消費しません。</li>
+            <li><strong>zIIP-Exploitation:</strong> Java (JZOS), z/OS XML System Services, Global Mirror (XRC) のシステムタスクなどが主要な利用者です。最近ではContainer Extension (zCX) や、Spark/AI Toolkit などのモダンなワークロードもzIIPを最大限に活用します。</li>
+            <li><strong>SMF記録:</strong> SMFタイプ30レコードなどを解析することで、実際にどの程度の「zIIP on CP」（zIIPで動くべきだったがCPで動いた時間）が発生しているかを把握し、zIIP増設のキャパシティプランニングに役立てます。</li>
+        </ul>
+    </section>
 </body>
 </html>

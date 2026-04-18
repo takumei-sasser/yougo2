@@ -19,5 +19,20 @@
     <h1>VTOC</h1>
     <p>Volume Table of Contents。各ボリューム内にあるデータセットのリストと配置情報を管理する領域。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>VTOCは、DASDボリュームのシリンダー0、トラック0（または指定された場所）に配置される管理領域で、ボリューム内のすべてのデータセットの物理的な「地図」を提供します。</p>
+        <ul>
+            <li><strong>DSCB (Data Set Control Block):</strong> 140バイトのレコード形式で、データセット情報を保持します。
+                <ul>
+                    <li><strong>Format-1:</strong> 名前、属性、最初の3つのエクステント情報。</li>
+                    <li><strong>Format-3:</strong> 4つ目以降のエクステント情報。</li>
+                    <li><strong>Format-4:</strong> VTOC自身の定義とボリューム属性。</li>
+                </ul>
+            </li>
+            <li><strong>VTOCインデックス (VIC):</strong> 大規模なボリュームではVTOC内の検索に時間がかかるため、<strong>VTOC Index</strong> という特別なデータセットを併用し、高速なメンバー検索と空き領域管理を実現します。</li>
+            <li><strong>空き領域管理:</strong> ボリューム内の未使用領域は Format-5 または Format-7 DSCB によって追跡され、新しいデータセット割り当て時に参照されます。</li>
+        </ul>
+    </section>
 </body>
 </html>

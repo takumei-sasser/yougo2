@@ -19,5 +19,15 @@
     <h1>JOBLIB</h1>
     <p>JOBLIBは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>JOBLIB</strong> は、ジョブに定義されたプログラム（ロードモジュールまたはプログラムオブジェクト）をシステムが検索する際、標準のシステムライブラリ（LNKLST等）よりも「優先して」検索する対象となる <strong>PDS/PDSE</strong> を指定するJCLステートメントです。</p>
+        <ul>
+            <li><strong>スコープ:</strong> <code>JOBLIB DD</code> で指定されたライブラリは、その <strong>ジョブ内のすべてのステップ（EXEC）</strong> で有効になります。</li>
+            <li><strong>検索順序:</strong> プログラム呼び出し時、システムは通常 (1) STEPLIB/JOBLIB → (2) LPA (Link Pack Area) → (3) LNKLST の順でモジュールを検索します。</li>
+            <li><strong>STEPLIBとの比較:</strong> JOBLIBとSTEPLIBが両方指定されたステップでは、<strong>STEPLIBがJOBLIBをオーバーライド</strong>（JOBLIBは無視される）します。</li>
+            <li><strong>運用上の注意点:</strong> CICSなどのサブシステムや製品のテスト環境を構築する際、本番環境のモジュールに影響を与えずに新バージョンのモジュールを試すためにJOBLIB/STEPLIBが多用されますが、APF（許可プログラム機能）の整合性には注意が必要です。</li>
+        </ul>
+    </section>
 </body>
 </html>

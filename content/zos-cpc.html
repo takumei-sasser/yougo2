@@ -19,5 +19,22 @@
     <h1>CPC</h1>
     <p>Central Processor Complex。物理的に1つの筐体に収められたプロセッサとメモリの集合体。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>CPCは、メインフレームの物理的な最小構成単位であり、<strong>CEC (Central Electronic Complex)</strong> とも呼ばれます。複数の <strong>PU (Processing Unit)</strong>、メモリ（Central Storage）、およびI/Oサブシステムが単一の筐体に統合されています。</p>
+        <ul>
+            <li><strong>PUのキャラクタライズ:</strong> CPC内の物理的なプロセッサ（コア）は、役割に応じて以下のいずれかに定義（キャラクタライズ）されます。
+                <ul>
+                    <li><strong>CP (Central Processor):</strong> 通常のz/OSワークロード用。</li>
+                    <li><strong>zIIP:</strong> 特定のワークロード（Java/Db2等）のオフロード用。</li>
+                    <li><strong>IFL (Integrated Facility for Linux):</strong> Linux on z の実行用。</li>
+                    <li><strong>ICF (Internal Coupling Facility):</strong> シスプレックス結合用。</li>
+                    <li><strong>SAP (System Assistance Processor):</strong> I/O処理の代行用。</li>
+                </ul>
+            </li>
+            <li><strong>ハードウェアの拡張性:</strong> 最新のz16などでは、物理的なブック（Drawer）を追加することで、最大200個以上のプロセッサと40TB以上のメモリを単一のCPCとして運用可能です。</li>
+            <li><strong>LPARとの関係:</strong> 一つのCPCは、PR/SMによって最大85個（モデルによる）のLPARに分割して使用することができます。</li>
+        </ul>
+    </section>
 </body>
 </html>

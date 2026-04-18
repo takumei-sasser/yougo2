@@ -19,5 +19,15 @@
     <h1>DASD</h1>
     <p>Direct Access Storage Device。ハードディスクなどの外部記憶装置の総称。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>メインフレームにおけるDASDは、単なるストレージではなく、z/Architectureに最適化された高度なI/Oサブシステムの一部として機能します。</p>
+        <ul>
+            <li><strong>CKD (Count-Key-Data) 形式:</strong> 現代のPC等の固定長ブロック形式と異なり、レコードごとに長さを変えられる伝統的な形式です。現代の物理ユニット（DS8000等）内部では固定ブロックで管理されていますが、OSからはCKDとしてエミュレートして見えます。</li>
+            <li><strong>PAV (Parallel Access Volume):</strong> 通常、一つのボリューム（UCB: Unit Control Block）に対して一度に一つのI/Oしか発行できませんが、<strong>PAV</strong> 機能により、一つのエイリアスを使用して並列にI/Oを発行可能になります。</li>
+            <li><strong>HyperPAV:</strong> WLMと連携し、I/Oの混雑状況に応じてエイリアスアドレスを動的にプールから各ボリュームへ配分する技術で、I/O待ち（IOSQ delay）を劇的に削減します。</li>
+            <li><strong>zHyperLink:</strong> CPUとストレージを極めて低いレイテンシーで直結する新しいI/O技術。従来のFICONプロトコルを介さない同期的なI/O処理を可能にします。</li>
+        </ul>
+    </section>
 </body>
 </html>

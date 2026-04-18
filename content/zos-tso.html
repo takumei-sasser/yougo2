@@ -19,5 +19,15 @@
     <h1>TSO/E</h1>
     <p>Time Sharing Option / Extensions。複数のユーザーが端末から対話形式でz/OSを利用できるようにする機能です。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>TSO/E</strong> は、メインフレームの歴史上、バッチ処理中心のシステムに「タイムシェアリング（時分割）」による対話環境をもたらした革命的なサブシステムです。</p>
+        <ul>
+            <li><strong>アドレス空間とVTAM:</strong> ユーザーがTSOにログオンすると、そのユーザー専用の「アドレス空間」が生成されます。端末（TN3270エミュレータ等）との通信は、VTAM（通信サブシステム）またはTCPIPを通じて行われます。</li>
+            <li><strong>コマンド・プロセッサ:</strong> TSOのプロンプト（<code>READY</code>）から入力されるコマンド（<code>ALLOCATE</code>, <code>FREE</code>, <code>CALL</code>等）を解釈・実行します。</li>
+            <li><strong>REXXとCLISTの基盤:</strong> z/OSの強力なスクリプト言語であるREXXおよびCLISTの実行環境（ホストコマンド環境）を提供し、システム管理の自動化になくてはならない存在です。</li>
+            <li><strong>バッチでのTSO (IKJEFT01):</strong> JCLのステップ内で <code>EXEC PGM=IKJEFT01</code>（またはIKJEFT1A/1B）を指定することで、バッチジョブとしてTSOコマンドやDb2のバッチプログラム（DSNシステム）などを実行できます。</li>
+        </ul>
+    </section>
 </body>
 </html>

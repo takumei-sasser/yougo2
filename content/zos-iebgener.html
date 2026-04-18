@@ -19,5 +19,20 @@
     <h1>IEBGENER</h1>
     <p>IEBGENERは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>IEBGENER</strong> は、順次データセット（Sequential Data Set）やPDSの単一メンバーのコピー、あるいはレコードの簡単な編集を行うための古典的かつ標準的なユーティリティです。</p>
+        <ul>
+            <li><strong>基本的なJCL構成:</strong> 
+                <ul>
+                    <li><strong>SYSUT1:</strong> コピー元の入力データセット。</li>
+                    <li><strong>SYSUT2:</strong> コピー先の出力データセット。</li>
+                    <li><strong>SYSIN:</strong> 制御ステートメント。単純なコピーなら <code>DUMMY</code> を指定します。</li>
+                    <li><strong>SYSPRINT:</strong> ユーティリティの実行結果やエラーメッセージが出力されます。</li>
+                </ul>
+            </li>
+            <li><strong>ICEGENERへの置き換え:</strong> 現代のz/OS環境では、データ量増大に対応するため、システム設定により IEBGENER の呼び出しが自動的に DFSORT の <strong>ICEGENER</strong> に透過的に置き換えられる（エイリアス化される）のが一般的です。これにより、特別な設定なしに高速化とリソース削減の恩恵を受けられます。</li>
+        </ul>
+    </section>
 </body>
 </html>

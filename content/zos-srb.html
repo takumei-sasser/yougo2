@@ -19,5 +19,19 @@
     <h1>SRB</h1>
     <p>Service Request Block。TCBよりも軽量でオーバーヘッドの少ない処理（システムサービス等）を実行するためのメカニズム。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>SRBは、特定のプログラム（通常はシステムルーチンやサブシステム）を非同期に、かつTCBのオーバーヘッドなしで実行するための制御ブロックです。z/OSの内部処理の多くはSRBによって駆動されます。</p>
+        <ul>
+            <li><strong>スケジューリング:</strong> <code>SCHEDULE</code> マクロ（または <strong>IEAMSCHD</strong>）により、特定のアドレス空間で実行するようにキューイングされます。優先度が高いGlobal SRBと、特定のアドレス空間に属するLocal SRBがあります。</li>
+            <li><strong>実行の性質:</strong>
+                <ul>
+                    <li><strong>Non-preemptible SRB:</strong> 従来のSRB。一度実行を開始すると、入出力（I/O）待ち以外では中断（プリエンプション）されず、完了までCPUを占有し続けます。</li>
+                    <li><strong>Preemptible SRB (Enclave SRB):</strong> z/OS UNIXやzIIPワークロードで使用されます。TCBと同様にWLMのディスパッチング優先度に従って中断が可能で、公平なリソース配分を実現します。</li>
+                </ul>
+            </li>
+            <li><strong>オフロード:</strong> 前述の通り、zIIPで実行されるワークロード（JavaやDb2の一部）はSRBモードとしてスケジュールされます。</li>
+        </ul>
+    </section>
 </body>
 </html>

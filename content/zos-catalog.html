@@ -19,5 +19,19 @@
     <h1>Catalog</h1>
     <p>データセットの名前と、それが格納されているボリューム（場所）を紐付けて管理するデータベース。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>z/OSのカタログシステムは <strong>ICF (Integrated Catalog Facility)</strong> と呼ばれ、データセットの物理的な場所を意識せずにアクセス（Device Independence）することを可能にします。</p>
+        <ul>
+            <li><strong>Master Catalog vs User Catalog:</strong> システムには一つの <strong>Master Catalog</strong> が存在し、重要なシステムデータセットを管理します。一般のデータセットは <strong>User Catalog</strong> に登録され、Master Catalog 内に定義された <strong>ALIAS</strong>（名前の接頭辞、HLQ）によって、どのUser Catalogを検索するかが決定されます。</li>
+            <li><strong>ICFの構造:</strong> 
+                <ul>
+                    <li><strong>BCS (Basic Catalog Structure):</strong> カタログ名やボリューム情報を保持するVSAM KSDS。</li>
+                    <li><strong>VVDS (VSAM Volume Data Set):</strong> 各ボリュームに存在し、そのボリューム内のVSAMデータセットの詳細な属性（CIサイズ等）や、非VSAMデータセットのカタログ連携情報を保持するデータセット。</li>
+                </ul>
+            </li>
+            <li><strong>カタログ検索の最適化:</strong> カタログは <strong>CAS (Catalog Address Space)</strong> によって管理され、メモリ上に情報をキャッシュすることで、ジョブ開始時のステップ割り当て（Allocation）を高速化します。</li>
+        </ul>
+    </section>
 </body>
 </html>

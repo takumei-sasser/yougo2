@@ -19,5 +19,21 @@
     <h1>JCL</h1>
     <p>JCLは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>JCLは、OSに対して「どのプログラムを」「どのようなリソース（ファイル、メモリ）を使用して」実行するかを指示するための言語です。</p>
+        <ul>
+            <li><strong>3大ステートメント:</strong> 
+                <ul>
+                    <li><strong>JOB:</strong> ジョブ全体の属性（名前、優先度、課金情報）を定義。</li>
+                    <li><strong>EXEC:</strong> 実行するプログラム名、またはカタログ化プロシージャ（PROC）を指定。</li>
+                    <li><strong>DD (Data Definition):</strong> プログラムが使用するデータセットの物理属性、カタログ情報、一時領域などを定義。</li>
+                </ul>
+            </li>
+            <li><strong>条件付き実行:</strong> <code>IF/THEN/ELSE/ENDIF</code> 構文や <code>COND</code> パラメータを使用して、前のステップの終了コード（Return Code）に応じた動的な制御が可能です。</li>
+            <li><strong>共通化と再利用:</strong> <strong>PROC</strong> (Procedure) を使用して定型的なステップをライブラリ化し、シンボリック・パラメータを用いて実行時に柔軟に設定を変更（オーバーライド）できます。</li>
+            <li><strong>JCLチェック:</strong> 構文エラーを事前に検出し、実行時の失敗を防ぐための <code>TYPRUN=SCAN</code> などの仕組みがあります。</li>
+        </ul>
+    </section>
 </body>
 </html>

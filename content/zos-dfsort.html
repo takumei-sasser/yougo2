@@ -19,5 +19,15 @@
     <h1>DFSORT</h1>
     <p>DFSORTは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>DFSORTは単なるソートツールではなく、高度なデータ加工と集計（Reporting）を極めて高速に行うためのエンジンです。</p>
+        <ul>
+            <li><strong>メモリの極限活用:</strong> 大容量の <strong>Memory Objects</strong> や <strong>Hiperspace</strong> を活用し、可能な限りディスクI/Oを発生させずにインメモリソート（In-memory sort）を実行します。</li>
+            <li><strong>JOINKEYS:</strong> 2つの異なるデータセットを特定のキーで結合（Inner Join / Full Outer Join等）することができます。従来、プログラム開発が必要だった複雑なマッチング処理をJCLのみで記述可能です。</li>
+            <li><strong>OUTFIL:</strong> 単一の入力から複数の異なる出力ファイルを同時に生成し、それぞれのファイルに対して異なる編集（ヘッダー/フッターの付与、フィールドの並べ替え、10進数変換等）を施すことができます。</li>
+            <li><strong>ICEGENER:</strong> <code>IEBGENER</code> の高機能・高速な代替ルーチンとして機能し、単純なデータコピーにおいてもシステム資源の消費を最小限に抑えます。</li>
+        </ul>
+    </section>
 </body>
 </html>

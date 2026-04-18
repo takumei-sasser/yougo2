@@ -21,10 +21,21 @@
     
     <div class="mermaid">
     graph TD
-    AS[Address Space] --> Common[Common Area]
-    AS --> Private[Private Area]
-    AS --> Epriv[Extended Private Area]
+    AS[Address Space] --> Common[Common Area: Nucleus/SQA/LPA/CSA]
+    AS --> Private[Private Area: LSQA/Region]
+    AS --> Above2G[64-bit Area: Above the Bar]
     </div>
+
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>z/OSのアドレス空間は、z/Architectureの多重仮想記憶（MVS）の根幹をなす概念です。単一のアドレス空間は、理論上最大16EB（エクサバイト）の広大さを持ちます。</p>
+        <ul>
+            <li><strong>仮想記憶の境界線:</strong> 24ビット領域（16MB以下）、31ビット領域（2GB以下：The Line）、そして64ビット領域（2GB以上：The Bar）に分かれます。古いプログラムとの互換性を維持しつつ、巨大なメモリ空間（64-bit addressing）を両立させます。</li>
+            <li><strong>Common Area:</strong> 全てのアドレス空間から共通して参照可能な領域です。<strong>Nucleus</strong>（OSの中核）、<strong>SQA</strong>（システム制御ブロック）、<strong>LPA</strong>（共有モジュール）、<strong>CSA</strong>（サブシステム間通信用）などが配置されます。</li>
+            <li><strong>DAT (Dynamic Address Translation):</strong> 命令がアクセスする仮想アドレスを、制御レジスタ（CR1）やページテーブルを用いて物理メモリ上の実アドレスに変換するハードウェア機構です。</li>
+            <li><strong>ASB (Address Space Block):</strong> 各アドレス空間の属性や状態は、システムリンケージインデックス（LX）やASN（Address Space Number）によって管理されます。</li>
+        </ul>
+    </section>
 
 </body>
 </html>

@@ -19,5 +19,15 @@
     <h1>ASID</h1>
     <p>Address Space Identifier。各アドレス空間を識別するためのシステム内の一意な番号。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>ASIDは2バイト（16ビット）の識別子で、理論上の最大数は65,535ですが、システム内部の予約やリソース制約により通常は数千個程度が運用上の上限となります。</p>
+        <ul>
+            <li><strong>Master Address Space:</strong> システム起動時に最初に生成されるアドレス空間で、常に <code>ASID=1</code> が割り当てられます。</li>
+            <li><strong>ASVT (Address Space Vector Table):</strong> 全てのアドレス空間のエントリポイントを保持するシステムテーブルです。ASIDはこのテーブルのインデックスとして機能します。</li>
+            <li><strong>STOKEN:</strong> ASIDは再利用される可能性があるため、システムの全生存期間を通じて一意な識別子として64ビットの <strong>STOKEN</strong> (Space Token) も併用されます。</li>
+            <li><strong>Reusable ASID:</strong> アドレス空間が終了しても、クロスメモリ接続などの理由でASIDをすぐに解放できない場合があります。z/OS V1R12以降、ASIDの再利用効率を向上させる機構が導入されています。</li>
+        </ul>
+    </section>
 </body>
 </html>

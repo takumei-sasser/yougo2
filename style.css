@@ -293,3 +293,48 @@ body.is-iframe .mermaid svg {
     to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+/* --- Technical Deep Dive Section --- */
+.technical-deep-dive {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: linear-gradient(to bottom right, #f8fafc, #eff6ff);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.technical-deep-dive h2 {
+    font-size: 1.2rem !important;
+    margin-top: 0 !important;
+    color: var(--accent) !important;
+    border-bottom: none !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem !important;
+}
+
+.technical-deep-dive h2::before {
+    content: '⚙️';
+    font-size: 1.1rem;
+}
+
+.technical-deep-dive p, .technical-deep-dive li {
+    font-size: 0.9rem !important;
+    color: #334155 !important;
+    line-height: 1.7 !important;
+}
+
+.technical-deep-dive ul {
+    margin-top: 0.5rem;
+}
+
+.technical-deep-dive code {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--accent);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 0.85rem;
+}
+

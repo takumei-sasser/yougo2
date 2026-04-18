@@ -19,5 +19,20 @@
     <h1>VVDS</h1>
     <p>VVDSは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Storageカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>VVDS (VSAM Volume Data Set)</strong> は、各ボリューム上に存在する「そのボリューム専用のカタログ拡張」として機能する特別なVSAM ESDSです。</p>
+        <ul>
+            <li><strong>BCSとの連携:</strong> カタログシステム（ICF）は、データセットの名前を保持する <strong>BCS</strong> (Basic Catalog Structure) と、物理ボリュームの状態を保持する <strong>VVDS</strong> の一対多の対応関係によって構成されます。</li>
+            <li><strong>内部エントリ:</strong> 
+                <ul>
+                    <li><strong>VVR (VSAM Volume Record):</strong> VSAMデータセットのCIサイズ、AMDSB（データセット制御ブロック）等の属性を保持します。</li>
+                    <li><strong>NVR (Non-VSAM Record):</strong> SMS管理下の非VSAMデータセットのSMSクラス情報などを保持します。</li>
+                </ul>
+            </li>
+            <li><strong>自動生成:</strong> ユーザーが手動で定義しなくても、そのボリュームで最初のVSAMデータセットまたはSMS管理データセットが作成される際に、システムが <code>SYS1.VVDS.Vvolser</code> という名前で自動的に作成します。</li>
+            <li><strong>重要性:</strong> VVDSが破損すると、たとえBCS（カタログ）が正常でも、そのボリューム上のVSAMデータセットへのアクセスが不可能になります。</li>
+        </ul>
+    </section>
 </body>
 </html>

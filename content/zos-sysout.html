@@ -19,5 +19,15 @@
     <h1>SYSOUT</h1>
     <p>SYSOUTは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>SYSOUT (System Output)</strong> は、ジョブの実行結果（ログ、エラーメッセージ、ユーザープログラムから出力されるレポート等）をSPOOLに書き出すためのJCLパラメーター、および出力されるデータそのものを指します。</p>
+        <ul>
+            <li><strong>SYSOUTクラス:</strong> <code>SYSOUT=A</code> や <code>SYSOUT=*</code> のようにクラス（A〜Z、0〜9等）を指定します。各クラスにはあらかじめ特定の印刷装置や扱い（保持、即時印刷等）がJES上で定義されています。</li>
+            <li><strong>外部ライター (External Writer):</strong> JES2の通常の出力処理に代わってSYSOUT処理を行う特殊なプログラムです。たとえば、システムメッセージをシステムログ（SYSLOG / LOGREC）としてまとめたり、SDSF等の閲覧ツールへ連携したりするために使用されます。</li>
+            <li><strong>HOLD / NOHOLD:</strong> HOLD指定された出力はスプール上で待機（HOLD）状態となり、SDSFなどを通じてユーザーが確認した上でパージする必要があります。NOHOLDの場合は即座にプリンタ等へルーティングされ、印刷完了後に消去されます。</li>
+            <li><strong>SDSF (System Display and Search Facility):</strong> 現場では、SYSOUTの内容をリアルタイム、あるいはジョブ終了後に閲覧するためのユーティリティとしてSDSFが広く用いられ、システム管理と問題判別の中心ツールとなっています。</li>
+        </ul>
+    </section>
 </body>
 </html>

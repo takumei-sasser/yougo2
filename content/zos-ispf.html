@@ -19,5 +19,15 @@
     <h1>ISPF</h1>
     <p>Interactive System Productivity Facility。TSO上で動作するパネル形式のメニューインターフェースです。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>ISPF</strong> は、メインフレームエンジニアにとっての「IDE（統合開発環境）」であり、データセットの編集、ジョブの実行、ユーティリティの呼び出しなどをメニュー形式で提供します。</p>
+        <ul>
+            <li><strong>PDF (Program Development Facility):</strong> データセットのブラウズ（Option 1）、エディター（Option 2）、ユーティリティ群（Option 3）など、日常的な開発・運用作業を提供するISPFの主要コンポーネントです。</li>
+            <li><strong>Split Screen:</strong> F2（SPLIT）キーを使用することで、物理的な1つの3270画面を複数の「論理画面」に分割し、最大32個（設定による）のISPFセッションを同時に切り替えて（SWAP）作業できます。</li>
+            <li><strong>ダイアログ管理 (Dialog Manager):</strong> 自作のREXXツールなどでISPFのパネル（画面）を表示させたり、テーブル（表形式データの管理）機能を使用したりするための基盤（<code>ISPEXEC</code> コマンド呼び出し等）を提供します。</li>
+            <li><strong>Z変数とプロファイル:</strong> ISPFセッションの各種設定（エディターのプロファイル状態やコマンド履歴など）は、ユーザーの「ISPF Profile データセット（ISPPROF）」内の <strong>Z変数</strong> として保存され、次回のログオン時に復元されます。</li>
+        </ul>
+    </section>
 </body>
 </html>

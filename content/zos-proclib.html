@@ -19,5 +19,15 @@
     <h1>PROCLIB</h1>
     <p>PROCLIBは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>PROCLIB (Procedure Library)</strong> は、頻繁に使用されるJCLの定型部分（プロシージャ）を登録しておくためのPDS/PDSEデータセットです。</p>
+        <ul>
+            <li><strong>カタログ化プロシージャ:</strong> SYS1.PROCLIB などのシステム標準ライブラリに事前に登録されたプロシージャは、JCLのEXEC文で直接呼び出すことができ、JCLの記述量削減と標準化を実現します。</li>
+            <li><strong>JCLLIBステートメント:</strong> システム標準以外のユーザー独自のPROCLIBを使用したい場合は、JCLの先頭部分に <code>JCLLIB ORDER=(my.custom.proclib)</code> のように指定して検索対象に含めます。</li>
+            <li><strong>シンボリック・パラメータ:</strong> PROCLIB内のJCLには <code>&amp;DSNAME</code> のような変数（シンボリック）を定義でき、呼び出し元のJCLから <code>EXEC PROC=myproc,DSNAME=TEST.DATA</code> のように動的に値を渡すことができます。</li>
+            <li><strong>オーバーライド:</strong> PROCLIB内の特定のDD文の設定（例えばSPACEやUNITなど）を、呼び出し元のジョブからステップ名とDD名を指定して一時的に上書き（オーバーライド）することができ、高い柔軟性を誇ります。</li>
+        </ul>
+    </section>
 </body>
 </html>

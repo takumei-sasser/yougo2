@@ -19,5 +19,15 @@
     <h1>WLM</h1>
     <p>Workload Manager。ビジネスの優先順位（サービスレベル）に基づき、CPUやメモリなどのシステム資源を動的に配分する機能。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>WLMは、従来の静的な優先順位管理（ICS/IPS）に代わり、1990年代に導入された「目標達成型」のリソース管理システムです。z/OSのパフォーマンス管理の頭脳となります。</p>
+        <ul>
+            <li><strong>サービス定義 (Service Definition):</strong> システム管理者は、ワークロードを <strong>Service Class</strong> に分類し、<strong>Response Time</strong> (応答時間) や <strong>Velocity</strong> (実行速度) などの具体的な目標（Goal）を設定した <strong>Service Policy</strong> を定義します。</li>
+            <li><strong>Velocity (ベロシティ):</strong> CPUを使用したいときに実際に使用できた割合を示す指標です。<code>Velocity = CPU / (CPU + Delay)</code> で計算され、バッチ処理などのバックグラウンドワークロードに多用されます。</li>
+            <li><strong>システム管理のリソース制御:</strong> WLMは10秒ごとのサンプリングを行い、目標未達成のワークロードがある場合、他からリソースを奪うか、ディスパッチ優先度を調整します。これには <strong>LPAR weight</strong> の動的調整（IRM）や CPU Capping も含まれます。</li>
+            <li><strong>Sysplex 連携:</strong> シスプレックス全体で同じサービスポリシーを共有し、各システムの負荷状況（Capacity）をリアルタイムで監視・調整することで、シスプレックス全体での最適化を図ります。</li>
+        </ul>
+    </section>
 </body>
 </html>

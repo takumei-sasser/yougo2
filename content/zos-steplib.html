@@ -19,5 +19,14 @@
     <h1>STEPLIB</h1>
     <p>STEPLIBは、z/OS（メインフレーム）を支える重要な技術要素の一つです。Developmentカテゴリーに分類されます。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>STEPLIB</strong> は、特定のジョブステップ（EXEC文単位）でのみ有効なプログラム検索ライブラリ（PDS/PDSE）を指定するJCLステートメントです。</p>
+        <ul>
+            <li><strong>JOBLIBとの違い:</strong> JOBLIBがジョブ全体に適用されるのに対し、STEPLIBはそのステップでのみ有効です。一つのステップに両方が存在する場合は、STEPLIBがJOBLIBを完全にオーバーライドします。</li>
+            <li><strong>ライブラリの連結 (Concatenation):</strong> 複数のライブラリを記述することで一つに連結して検索させることができます。ただし、連結されたライブラリの中に <strong>APF (Authorized Program Facility)</strong> の認可を受けていないライブラリが一つでも含まれていると、連結全体が「未認可」とみなされ、特権が必要なプログラムはシステム・アベンド（S047等）で終了します。</li>
+            <li><strong>パフォーマンスと運用:</strong> STEPLIBによる検索はLPAやLNKLSTなどのシステム最適化領域よりも先に行われるため、多様なアプリケーションモジュールを頻繁に呼び出すケースでは、ディレクトリ検索のオーバーヘッド（I/O）が発生する点に注意が必要です。</li>
+        </ul>
+    </section>
 </body>
 </html>

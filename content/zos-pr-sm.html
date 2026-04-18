@@ -19,5 +19,14 @@
     <h1>PR/SM</h1>
     <p>Processor Resource/Systems Manager。ハードウェア資源を各LPARに配分・管理する仮想化レイヤー。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>PR/SMは、IBM Mainframeのハードウェア（CPC）に組み込まれたType-1ハイパーバイザーであり、OSを介在させずにLPARの生成、プロセッサ管理、およびメモリ割り当てを実行します。</p>
+        <ul>
+            <li><strong>論理プロセッサ管理:</strong> 各LPARに「論理」プロセッサを割り振ります。これには <strong>Dedicated</strong> (占有) と <strong>Shared</strong> (共有) の2つのモードがあります。共有モードでは、ハードウェア内の「マイクロコード」が数ミリ秒単位で物理プロセッサの権限を各LPARに回します（タイムスライス）。</li>
+            <li><strong>LPAR Weights:</strong> 複数のLPARがCPUを求めて競合した際、PR/SMは各LPARに設定された <strong>Weight</strong> (重み) 値に基づいて、物理CPU時間を比例配分します。これにより、重要度の高いシステムのパフォーマンスを担保します。</li>
+            <li><strong>セキュアな分離:</strong> PR/SMは <strong>Common Criteria EAL5+</strong> 認定を受けており、論理的なパーティション間でのデータ漏洩や干渉をハードウェア・マイクロコードレベルで完全に遮断します。</li>
+        </ul>
+    </section>
 </body>
 </html>

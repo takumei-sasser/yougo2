@@ -19,5 +19,14 @@
     <h1>Dataset</h1>
     <p>z/OSにおけるファイル。複数の形式（PS, PDS, VSAMなど）があります。</p>
     
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p>z/OSにおけるデータセットは、単なるバイト列ではなく、レコード単位で管理される構造化されたデータの一群です。その物理的な属性は <strong>VTOC (Volume Table of Contents)</strong> 内の <strong>DSCB (Data Set Control Block)</strong> に記録されます。</p>
+        <ul>
+            <li><strong>レコード形式 (RECFM):</strong> 固定長（F/FB）、可変長（V/VB）、および不定形式（U：主にロードモジュール用）があります。FB（Fixed Blocked）では、複数のレコードを一つの物理的なブロックにまとめることで、I/O効率を向上させます。</li>
+            <li><strong>ブロックサイズの最適化:</strong> 現代的なシステムでは <code>RECFM=FB, BLKSIZE=0</code> と指定することで、DASDデバイスのトラック容量に合わせてシステムが自動的に最適なブロックサイズ（System Determined Block Size）を決定します。</li>
+            <li><strong>エクステント (Extent):</strong> データの増大に伴い、DASD上の非連続な領域が割り当てられる単位です。一つのデータセットは通常最大16個のエクステント（SMS管理下ではそれ以上）を持つことができ、これを超えると <code>B37</code> 等のアベンドが発生します。</li>
+        </ul>
+    </section>
 </body>
 </html>
