@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'zos-tcpip', title: 'TCP/IP', file: 'zos-tcpip.html', category: 'Net & Sec' },
         { id: 'zos-osa', title: 'OSA Adapter', file: 'zos-osa.html', category: 'Net & Sec' },
         { id: 'zos-hiper', title: 'HiperSockets', file: 'zos-hiper.html', category: 'Net & Sec' },
+        { id: 'zos-fcip', title: 'FCIP', file: 'zos-fcip.html', category: 'Net & Sec' },
         { id: 'zos-zert', title: 'zERT (Encryption)', file: 'zos-zert.html', category: 'Net & Sec' },
         { id: 'zos-saf', title: 'SAF', file: 'zos-saf.html', category: 'Net & Sec' },
         { id: 'zos-at-tls', title: 'AT-TLS', file: 'zos-at-tls.html', category: 'Net & Sec' },

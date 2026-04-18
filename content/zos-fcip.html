@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../mermaid.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'neutral',
+                securityLevel: 'loose'
+            });
+            mermaid.init();
+        });
+    </script>
+</head>
+<body class="is-iframe">
+    <h1>FCIP</h1>
+    <p>FCIP (Fibre Channel over IP) は、z/OS（メインフレーム）を支える重要な技術要素の一つです。Net & Secカテゴリーに分類されます。</p>
+    
+    <section class="technical-deep-dive">
+        <h2>スペシャリストによる技術解説</h2>
+        <p><strong>FCIP (Fibre Channel over IP)</strong> は、標準のTCP/IPネットワーク技術を用いて、遠隔地間でFibre Channel（FICONやFCP）のトラフィックをトンネリングする技術です。</p>
+        <ul>
+            <li><strong>長距離データ転送の実現:</strong> 通常のFibre Channelケーブル（光ファイバー）による直接接続は、信号減衰のため数十キロメートルから最大約100km程度の距離制限があります。FCIPルーターを使用し、Fibre ChannelフレームをIPパケットにカプセル化することで、WAN経由での大陸間の通信など、事実上距離の上限なくストレージの接続が可能になります。</li>
+            <li><strong>災害対策 (DR) との連携:</strong> IBMストレージの <strong>PPRC (Metro Mirror / Global Mirror)</strong> や <strong>GDPS</strong> といったディザスタ・リカバリの中核となる非同期・同期データレプリケーション機能は、数十〜数千キロ離れたサイト間でのデータ複製を行う際、このFCIPトンネリング環境を前提として設計・運用されることが多くなっています。</li>
+            <li><strong>TCP/IPの最適化:</strong> ストレージトラフィックは微小なパケットロスや遅延に敏感ですが、専用のFCIPルーターはTCPウィンドウサイズの調整、データ圧縮、IPSecによる強固な暗号化などをハードウェア・アプライアンスレベルで行い、安定したスループットを維持します。</li>
+        </ul>
+    </section>
+</body>
+</html>
